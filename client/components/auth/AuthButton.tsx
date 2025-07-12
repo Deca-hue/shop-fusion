@@ -3,6 +3,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { AuthModal } from "./AuthModal";
 import { Button } from "@/components/ui/button";
 import { User, LogOut } from "lucide-react";
+import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 interface AuthButtonProps {
