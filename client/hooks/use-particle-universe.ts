@@ -209,18 +209,22 @@ export function useParticleUniverse(
     sounds.playGalaxyCreation();
   }, [sounds]);
 
-  const addAttractor = useCallback((position?: THREE.Vector3) => {
-    if (!universeRef.current) return;
+  const addAttractor = useCallback(
+    (position?: THREE.Vector3) => {
+      if (!universeRef.current) return;
 
-    const attractorPos =
-      position ||
-      new THREE.Vector3(
-        (Math.random() - 0.5) * 30,
-        (Math.random() - 0.5) * 30,
-        (Math.random() - 0.5) * 30,
-      );
-    universeRef.current.addAttractor(attractorPos);
-  }, []);
+      const attractorPos =
+        position ||
+        new THREE.Vector3(
+          (Math.random() - 0.5) * 30,
+          (Math.random() - 0.5) * 30,
+          (Math.random() - 0.5) * 30,
+        );
+      universeRef.current.addAttractor(attractorPos);
+      sounds.playAttractorPulse();
+    },
+    [sounds],
+  );
 
   const clearUniverse = useCallback(() => {
     if (!universeRef.current) return;
