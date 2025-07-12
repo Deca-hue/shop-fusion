@@ -5,7 +5,6 @@ import { CartButton } from "@/components/cart/CartButton";
 import { Link } from "react-router-dom";
 
 export default function Index() {
-  const { getTotalItems } = useCart();
   const { user, isAuthenticated } = useAuth();
   const featuredProducts = getFeaturedProducts();
 
