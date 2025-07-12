@@ -1,4 +1,14 @@
+import { useCart } from "@/contexts/CartContext";
+import { useAuth } from "@/contexts/AuthContext";
+import { getFeaturedProducts } from "@/lib/mock-data";
+import { ProductCard } from "@/components/products/ProductCard";
+import { Link } from "react-router-dom";
+
 export default function Index() {
+  const { getTotalItems } = useCart();
+  const { user, isAuthenticated } = useAuth();
+  const featuredProducts = getFeaturedProducts();
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -7,9 +17,11 @@ export default function Index() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center">
-              <h1 className="text-2xl font-serif font-bold text-brand-primary">
-                ShopFusion
-              </h1>
+              <Link to="/">
+                <h1 className="text-2xl font-serif font-bold text-brand-primary">
+                  ShopFusion
+                </h1>
+              </Link>
             </div>
 
             {/* Search Bar */}
@@ -40,13 +52,20 @@ export default function Index() {
 
             {/* Navigation */}
             <nav className="flex items-center space-x-6">
-              <a href="#" className="text-foreground hover:text-brand-primary">
-                Account
-              </a>
-              <a
-                href="#"
-                className="text-foreground hover:text-brand-primary relative"
+              <Link
+                to="/products"
+                className="text-foreground hover:text-brand-primary"
               >
+                Products
+              </Link>
+              {isAuthenticated ? (
+                <span className="text-foreground">Hi, {user?.firstName}!</span>
+              ) : (
+                <button className="text-foreground hover:text-brand-primary">
+                  Sign In
+                </button>
+              )}
+              <button className="text-foreground hover:text-brand-primary relative">
                 <svg
                   className="h-6 w-6"
                   fill="none"
@@ -61,9 +80,9 @@ export default function Index() {
                   />
                 </svg>
                 <span className="absolute -top-2 -right-2 bg-brand-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  0
+                  {getTotalItems()}
                 </span>
-              </a>
+              </button>
             </nav>
           </div>
         </div>
@@ -81,9 +100,12 @@ export default function Index() {
               for everything you need.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="btn-primary bg-white text-brand-primary hover:bg-ui-gray-100">
+              <Link
+                to="/products"
+                className="btn-primary bg-white text-brand-primary hover:bg-ui-gray-100 text-center"
+              >
                 Shop Now
-              </button>
+              </Link>
               <button className="btn-secondary bg-transparent text-white border-white hover:bg-white hover:text-brand-primary">
                 Learn More
               </button>
@@ -100,22 +122,23 @@ export default function Index() {
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { name: "Electronics", icon: "📱" },
-              { name: "Fashion", icon: "👕" },
-              { name: "Home & Garden", icon: "🏠" },
-              { name: "Sports", icon: "⚽" },
-              { name: "Books", icon: "📚" },
-              { name: "Beauty", icon: "💄" },
-              { name: "Toys", icon: "🧸" },
-              { name: "Food", icon: "🍕" },
+              { name: "Electronics", icon: "📱", slug: "electronics" },
+              { name: "Fashion", icon: "👕", slug: "fashion" },
+              { name: "Home & Garden", icon: "🏠", slug: "home" },
+              { name: "Sports", icon: "⚽", slug: "sports" },
+              { name: "Books", icon: "📚", slug: "books" },
+              { name: "Beauty", icon: "💄", slug: "beauty" },
+              { name: "Toys", icon: "🧸", slug: "toys" },
+              { name: "Food", icon: "🍕", slug: "food" },
             ].map((category, index) => (
-              <div
+              <Link
                 key={index}
-                className="product-card text-center p-6 cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                to={`/products?category=${category.slug}`}
+                className="product-card text-center p-6 cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1 block"
               >
                 <div className="text-4xl mb-4">{category.icon}</div>
                 <h3 className="font-semibold text-lg">{category.name}</h3>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -126,77 +149,13 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-12">
             <h2 className="text-3xl font-serif font-bold">Featured Products</h2>
-            <button className="text-brand-primary hover:underline">
+            <Link to="/products" className="text-brand-primary hover:underline">
               View All
-            </button>
+            </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                name: "Wireless Headphones",
-                price: 99.99,
-                originalPrice: 149.99,
-                image:
-                  "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop",
-                badge: "SALE",
-              },
-              {
-                name: "Smart Watch",
-                price: 199.99,
-                image:
-                  "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop",
-                badge: "NEW",
-              },
-              {
-                name: "Coffee Maker",
-                price: 79.99,
-                image:
-                  "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=300&h=300&fit=crop",
-                badge: "FEATURED",
-              },
-              {
-                name: "Laptop Stand",
-                price: 49.99,
-                image:
-                  "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=300&h=300&fit=crop",
-              },
-            ].map((product, index) => (
-              <div key={index} className="product-card relative group">
-                {product.badge && (
-                  <div
-                    className={`product-badge ${
-                      product.badge === "SALE"
-                        ? "badge-sale"
-                        : product.badge === "NEW"
-                          ? "badge-new"
-                          : "badge-featured"
-                    }`}
-                  >
-                    {product.badge}
-                  </div>
-                )}
-                <div className="aspect-square overflow-hidden">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="product-image group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="font-semibold mb-2">{product.name}</h3>
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="price-tag text-brand-primary">
-                      ${product.price}
-                    </span>
-                    {product.originalPrice && (
-                      <span className="original-price">
-                        ${product.originalPrice}
-                      </span>
-                    )}
-                  </div>
-                  <button className="cart-button w-full">Add to Cart</button>
-                </div>
-              </div>
+            {featuredProducts.slice(0, 4).map((product) => (
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </div>
