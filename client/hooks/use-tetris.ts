@@ -33,6 +33,9 @@ export function useTetris() {
 
   const dropTimeRef = useRef<number>(0);
   const lastTimeRef = useRef<number>(0);
+  const previousLevelRef = useRef<number>(0);
+
+  const sounds = useRetroSounds();
 
   // Start new game
   const startGame = useCallback(() => {
