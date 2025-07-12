@@ -164,6 +164,10 @@ export function useTetris() {
         dropDistance++;
       }
 
+      if (dropDistance > 0) {
+        sounds.playDrop();
+      }
+
       const droppedPiece = {
         ...prev.currentPiece,
         position: { ...prev.currentPiece.position, y: newY },
@@ -188,6 +192,15 @@ export function useTetris() {
         prev.nextPiece!.position,
       );
 
+      // Play appropriate sound effects
+      if (linesCleared > 0) {
+        sounds.playLineClear();
+      }
+
+      if (gameOver) {
+        setTimeout(() => sounds.playGameOver(), 200);
+      }
+
       return {
         ...prev,
         board: newBoard,
@@ -200,7 +213,7 @@ export function useTetris() {
         isPlaying: !gameOver,
       };
     });
-  }, []);
+  }, [sounds]);
 
   // Drop piece one line
   const dropPiece = useCallback(() => {
