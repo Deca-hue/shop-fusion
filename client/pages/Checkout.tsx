@@ -92,12 +92,12 @@ export default function Checkout() {
       <header className="bg-white border-b border-ui-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <Link to="/" className="flex items-center gap-2">
-              <ArrowLeft className="w-5 h-5" />
+            <div className="flex items-center gap-4">
+              <BackButton to="/" />
               <h1 className="text-xl font-serif font-bold text-brand-primary">
                 ShopFusion
               </h1>
-            </Link>
+            </div>
 
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2 text-sm text-ui-gray-600">
