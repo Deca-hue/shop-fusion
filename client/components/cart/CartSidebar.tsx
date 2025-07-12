@@ -179,8 +179,10 @@ export function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
 
               {/* Action Buttons */}
               <div className="space-y-2">
-                <Button className="w-full" size="lg">
-                  Checkout
+                <Button className="w-full" size="lg" asChild>
+                  <Link to="/checkout" onClick={onClose}>
+                    Checkout
+                  </Link>
                 </Button>
                 <Button
                   onClick={onClose}
