@@ -32,6 +32,7 @@ export function AuthModal({
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const { login, register, isLoading } = useAuth();
+  const { secureSubmit, checkRateLimit, isSecureEnvironment } = useSecurity();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
