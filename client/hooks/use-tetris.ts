@@ -67,35 +67,43 @@ export function useTetris() {
   }, []);
 
   // Move piece
-  const movePiece = useCallback((deltaX: number, deltaY: number) => {
-    setGameState((prev) => {
-      if (
-        !prev.currentPiece ||
-        !prev.isPlaying ||
-        prev.isPaused ||
-        prev.gameOver
-      ) {
-        return prev;
-      }
+  const movePiece = useCallback(
+    (deltaX: number, deltaY: number) => {
+      setGameState((prev) => {
+        if (
+          !prev.currentPiece ||
+          !prev.isPlaying ||
+          prev.isPaused ||
+          prev.gameOver
+        ) {
+          return prev;
+        }
 
-      const newPosition: Position = {
-        x: prev.currentPiece.position.x + deltaX,
-        y: prev.currentPiece.position.y + deltaY,
-      };
-
-      if (isValidPosition(prev.board, prev.currentPiece, newPosition)) {
-        return {
-          ...prev,
-          currentPiece: {
-            ...prev.currentPiece,
-            position: newPosition,
-          },
+        const newPosition: Position = {
+          x: prev.currentPiece.position.x + deltaX,
+          y: prev.currentPiece.position.y + deltaY,
         };
-      }
 
-      return prev;
-    });
-  }, []);
+        if (isValidPosition(prev.board, prev.currentPiece, newPosition)) {
+          // Play move sound only for horizontal movement
+          if (deltaX !== 0) {
+            sounds.playMove();
+          }
+
+          return {
+            ...prev,
+            currentPiece: {
+              ...prev.currentPiece,
+              position: newPosition,
+            },
+          };
+        }
+
+        return prev;
+      });
+    },
+    [sounds],
+  );
 
   // Rotate piece
   const rotatePiece = useCallback(() => {
