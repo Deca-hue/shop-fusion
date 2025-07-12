@@ -38,17 +38,36 @@ export function AuthModal({
     e.preventDefault();
     setErrors({});
 
-    // Basic validation
+    // Security check - rate limiting
+    if (!checkRateLimit(formData.email)) {
+      setErrors({
+        submit: "Too many attempts. Please try again in a few minutes.",
+      });
+      return;
+    }
+
+    // Enhanced validation
     const newErrors: Record<string, string> = {};
 
-    if (!formData.email) newErrors.email = "Email is required";
-    if (!formData.password) newErrors.password = "Password is required";
+    // Email validation
+    const emailError = validateEmail(formData.email);
+    if (emailError) newErrors.email = emailError;
+
+    // Password validation
+    const passwordError = validatePassword(formData.password);
+    if (passwordError) {
+      newErrors.password =
+        mode === "register"
+          ? passwordError
+          : (formData.password ? null : "Password is required") || "";
+    }
 
     if (mode === "register") {
-      if (!formData.firstName) newErrors.firstName = "First name is required";
-      if (!formData.lastName) newErrors.lastName = "Last name is required";
-      if (formData.password.length < 6)
-        newErrors.password = "Password must be at least 6 characters";
+      const firstNameError = validateRequired(formData.firstName, "First name");
+      if (firstNameError) newErrors.firstName = firstNameError;
+
+      const lastNameError = validateRequired(formData.lastName, "Last name");
+      if (lastNameError) newErrors.lastName = lastNameError;
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -56,32 +75,31 @@ export function AuthModal({
       return;
     }
 
-    try {
-      let success = false;
+    // Secure submission
+    const result = await secureSubmit(async () => {
       if (mode === "login") {
-        success = await login(formData.email, formData.password);
+        return await login(formData.email, formData.password);
       } else {
-        success = await register(
+        return await register(
           formData.email,
           formData.password,
           formData.firstName,
           formData.lastName,
         );
       }
+    }, formData.email);
 
-      if (success) {
-        onClose();
-        setFormData({ email: "", password: "", firstName: "", lastName: "" });
-      } else {
-        setErrors({
-          submit:
-            mode === "login"
-              ? "Invalid email or password"
-              : "Email already exists",
-        });
-      }
-    } catch (error) {
-      setErrors({ submit: "An error occurred. Please try again." });
+    if (result.success && result.data) {
+      onClose();
+      setFormData({ email: "", password: "", firstName: "", lastName: "" });
+    } else {
+      setErrors({
+        submit:
+          result.error ||
+          (mode === "login"
+            ? "Invalid email or password"
+            : "Email already exists"),
+      });
     }
   };
 
