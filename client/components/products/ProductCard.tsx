@@ -181,9 +181,13 @@ export function ProductCard({
 
         {/* Stock Status */}
         {product.inStock ? (
-          <div className="text-sm text-brand-success">In Stock</div>
+          <div className="text-sm text-brand-success font-medium">
+            ✓ In Stock ({product.stockCount} available)
+          </div>
         ) : (
-          <div className="text-sm text-ui-gray-500">Out of Stock</div>
+          <div className="text-sm text-product-unavailable font-medium">
+            ✗ Currently Unavailable
+          </div>
         )}
 
         {/* Mobile Add to Cart Button */}
