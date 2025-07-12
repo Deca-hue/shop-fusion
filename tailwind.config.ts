@@ -22,7 +22,8 @@ export default {
           '"Source Code Pro"',
           "monospace",
         ],
-        retro: ['"Press Start 2P"', "monospace"],
+        space: ['"Orbitron"', "monospace"],
+        cosmic: ['"Exo 2"', "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -68,31 +69,27 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Retro gaming colors
-        neon: {
-          cyan: "hsl(var(--neon-cyan))",
-          pink: "hsl(var(--neon-pink))",
-          green: "hsl(var(--neon-green))",
-          yellow: "hsl(var(--neon-yellow))",
-          purple: "hsl(var(--neon-purple))",
-          blue: "hsl(var(--neon-blue))",
-          orange: "hsl(var(--neon-orange))",
+        // Cosmic colors
+        cosmic: {
+          purple: "hsl(var(--cosmic-purple))",
+          blue: "hsl(var(--cosmic-blue))",
+          pink: "hsl(var(--cosmic-pink))",
+          teal: "hsl(var(--cosmic-teal))",
+          gold: "hsl(var(--cosmic-gold))",
+          green: "hsl(var(--cosmic-green))",
+          orange: "hsl(var(--cosmic-orange))",
         },
-        tetris: {
-          block: {
-            I: "hsl(var(--tetris-I))", // Cyan
-            O: "hsl(var(--tetris-O))", // Yellow
-            T: "hsl(var(--tetris-T))", // Purple
-            S: "hsl(var(--tetris-S))", // Green
-            Z: "hsl(var(--tetris-Z))", // Red
-            J: "hsl(var(--tetris-J))", // Blue
-            L: "hsl(var(--tetris-L))", // Orange
-          },
+        particle: {
+          star: "hsl(var(--particle-star))",
+          nebula: "hsl(var(--particle-nebula))",
+          comet: "hsl(var(--particle-comet))",
+          galaxy: "hsl(var(--particle-galaxy))",
+          plasma: "hsl(var(--particle-plasma))",
         },
-        retro: {
-          dark: "hsl(var(--retro-dark))",
-          darker: "hsl(var(--retro-darker))",
-          grid: "hsl(var(--retro-grid))",
+        space: {
+          void: "hsl(var(--space-void))",
+          deep: "hsl(var(--space-deep))",
+          glow: "hsl(var(--space-glow))",
         },
       },
       borderRadius: {
