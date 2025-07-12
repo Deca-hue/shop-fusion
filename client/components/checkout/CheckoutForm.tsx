@@ -509,7 +509,121 @@ export function CheckoutForm({ onOrderComplete }: CheckoutFormProps) {
                         </p>
                       )}
                     </div>
-                    {/* Add other billing fields similar to shipping */}
+
+                    <div>
+                      <label className="block text-sm font-medium mb-2">
+                        Last Name *
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.billing.lastName}
+                        onChange={(e) =>
+                          updateFormData("billing", "lastName", e.target.value)
+                        }
+                        className={cn(
+                          "input-field",
+                          errors["billing.lastName"] && "border-red-500",
+                        )}
+                      />
+                      {errors["billing.lastName"] && (
+                        <p className="text-red-500 text-sm mt-1">
+                          {errors["billing.lastName"]}
+                        </p>
+                      )}
+                    </div>
+
+                    <div className="md:col-span-2">
+                      <label className="block text-sm font-medium mb-2">
+                        Address *
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.billing.address1}
+                        onChange={(e) =>
+                          updateFormData("billing", "address1", e.target.value)
+                        }
+                        className={cn(
+                          "input-field",
+                          errors["billing.address1"] && "border-red-500",
+                        )}
+                        placeholder="Street address"
+                      />
+                      {errors["billing.address1"] && (
+                        <p className="text-red-500 text-sm mt-1">
+                          {errors["billing.address1"]}
+                        </p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium mb-2">
+                        City *
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.billing.city}
+                        onChange={(e) =>
+                          updateFormData("billing", "city", e.target.value)
+                        }
+                        className={cn(
+                          "input-field",
+                          errors["billing.city"] && "border-red-500",
+                        )}
+                      />
+                      {errors["billing.city"] && (
+                        <p className="text-red-500 text-sm mt-1">
+                          {errors["billing.city"]}
+                        </p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium mb-2">
+                        State *
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.billing.state}
+                        onChange={(e) =>
+                          updateFormData("billing", "state", e.target.value)
+                        }
+                        className={cn(
+                          "input-field",
+                          errors["billing.state"] && "border-red-500",
+                        )}
+                      />
+                      {errors["billing.state"] && (
+                        <p className="text-red-500 text-sm mt-1">
+                          {errors["billing.state"]}
+                        </p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium mb-2">
+                        Postal Code *
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.billing.postalCode}
+                        onChange={(e) =>
+                          updateFormData(
+                            "billing",
+                            "postalCode",
+                            e.target.value,
+                          )
+                        }
+                        className={cn(
+                          "input-field",
+                          errors["billing.postalCode"] && "border-red-500",
+                        )}
+                      />
+                      {errors["billing.postalCode"] && (
+                        <p className="text-red-500 text-sm mt-1">
+                          {errors["billing.postalCode"]}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 )}
               </div>
