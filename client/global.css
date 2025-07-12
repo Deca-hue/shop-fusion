@@ -124,14 +124,10 @@
   }
 
   body {
-    @apply bg-background text-foreground font-cosmic;
-    background: radial-gradient(
-      ellipse at center,
-      hsl(var(--space-deep)) 0%,
-      hsl(var(--space-void)) 100%
-    );
+    @apply bg-background text-foreground font-sans;
     min-height: 100vh;
     overflow-x: hidden;
+    line-height: 1.6;
   }
 
   .retro-text {
@@ -461,5 +457,119 @@
 
   .cosmic-button:hover::before {
     left: 100%;
+  }
+
+  /* Ecommerce Styles */
+  .product-card {
+    @apply bg-white rounded-lg shadow-sm border border-ui-gray-200 overflow-hidden;
+    @apply hover:shadow-md transition-shadow duration-300;
+  }
+
+  .product-image {
+    @apply aspect-square w-full object-cover;
+  }
+
+  .price-tag {
+    @apply font-semibold text-lg;
+  }
+
+  .sale-price {
+    @apply text-product-sale;
+  }
+
+  .original-price {
+    @apply text-ui-gray-500 line-through text-sm;
+  }
+
+  .product-badge {
+    @apply absolute top-2 left-2 px-2 py-1 text-xs font-medium rounded-full;
+  }
+
+  .badge-sale {
+    @apply bg-product-sale text-white;
+  }
+
+  .badge-new {
+    @apply bg-product-new text-white;
+  }
+
+  .badge-featured {
+    @apply bg-product-featured text-white;
+  }
+
+  .cart-button {
+    @apply bg-brand-primary text-white px-4 py-2 rounded-md font-medium;
+    @apply hover:bg-brand-primary/90 transition-colors duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2;
+  }
+
+  .quantity-input {
+    @apply w-16 text-center border border-ui-gray-300 rounded-md py-1;
+    @apply focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent;
+  }
+
+  .header-nav {
+    @apply bg-white shadow-sm border-b border-ui-gray-200;
+  }
+
+  .category-nav {
+    @apply bg-ui-gray-50 border-b border-ui-gray-200;
+  }
+
+  .footer-section {
+    @apply bg-ui-gray-900 text-white;
+  }
+
+  .search-input {
+    @apply w-full px-4 py-2 border border-ui-gray-300 rounded-lg;
+    @apply focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent;
+  }
+
+  .filter-checkbox {
+    @apply h-4 w-4 text-brand-primary border-ui-gray-300 rounded;
+    @apply focus:ring-brand-primary focus:ring-2;
+  }
+
+  /* Animations */
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  .slide-in {
+    animation: slide-in 0.3s ease-out;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in {
+    animation: fade-in 0.4s ease-out;
+  }
+
+  @keyframes pulse-scale {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  .pulse-scale {
+    animation: pulse-scale 2s ease-in-out infinite;
   }
 }
