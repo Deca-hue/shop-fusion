@@ -324,6 +324,14 @@ export function useTetris() {
     dropPiece,
   ]);
 
+  // Check for level up and play sound
+  useEffect(() => {
+    if (gameState.level > previousLevelRef.current && gameState.level > 0) {
+      sounds.playLevelUp();
+    }
+    previousLevelRef.current = gameState.level;
+  }, [gameState.level, sounds]);
+
   // Keyboard controls
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
