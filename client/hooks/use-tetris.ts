@@ -16,6 +16,7 @@ import {
   BOARD_WIDTH,
   BOARD_HEIGHT,
 } from "@/lib/tetris";
+import { useRetroSounds } from "./use-retro-sounds";
 
 export function useTetris() {
   const [gameState, setGameState] = useState<GameState>({
