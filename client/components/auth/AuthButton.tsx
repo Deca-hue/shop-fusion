@@ -48,9 +48,13 @@ export function AuthButton({ className }: AuthButtonProps) {
                 Settings
               </button>
               {user.role === "admin" && (
-                <button className="w-full text-left px-3 py-2 text-sm hover:bg-ui-gray-50 rounded text-brand-primary">
+                <Link
+                  to="/admin"
+                  className="w-full text-left px-3 py-2 text-sm hover:bg-ui-gray-50 rounded text-brand-primary block"
+                  onClick={() => setShowDropdown(false)}
+                >
                   Admin Panel
-                </button>
+                </Link>
               )}
               <hr className="my-1" />
               <button
