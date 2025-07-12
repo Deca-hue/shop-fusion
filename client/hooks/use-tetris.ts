@@ -281,7 +281,7 @@ export function useTetris() {
         isPlaying: !gameOver,
       };
     });
-  }, []);
+  }, [sounds]);
 
   // Game loop
   useEffect(() => {
