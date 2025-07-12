@@ -5,6 +5,7 @@ import { mockProducts, mockCategories } from "@/lib/mock-data";
 import { Product, Category } from "@shared/types";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { BackButton } from "@/components/ui/BackButton";
 import {
   Package,
   Users,
