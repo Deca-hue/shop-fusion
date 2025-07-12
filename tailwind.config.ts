@@ -99,6 +99,23 @@ export default {
             900: "hsl(var(--ui-gray-900))",
           },
         },
+        luxury: {
+          gold: {
+            light: "hsl(var(--gradient-gold-end))",
+            DEFAULT: "hsl(var(--gradient-gold-start))",
+            dark: "hsl(45 93% 40%)",
+          },
+          navy: {
+            light: "hsl(var(--gradient-navy-end))",
+            DEFAULT: "hsl(var(--gradient-navy-start))",
+            dark: "hsl(220 60% 12%)",
+          },
+          purple: {
+            light: "hsl(var(--gradient-purple-end))",
+            DEFAULT: "hsl(var(--gradient-purple-start))",
+            dark: "hsl(262 83% 45%)",
+          },
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
