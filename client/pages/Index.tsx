@@ -1,7 +1,7 @@
-import { useCart } from "@/contexts/CartContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { getFeaturedProducts } from "@/lib/mock-data";
 import { ProductCard } from "@/components/products/ProductCard";
+import { CartButton } from "@/components/cart/CartButton";
 import { Link } from "react-router-dom";
 
 export default function Index() {
