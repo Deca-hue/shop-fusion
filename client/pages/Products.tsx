@@ -105,6 +105,9 @@ export default function Products() {
       {/* Header */}
       <div className="bg-white border-b border-ui-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="mb-4">
+            <BackButton to="/" />
+          </div>
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
             <div>
               <h1 className="text-3xl font-serif font-bold text-foreground">
