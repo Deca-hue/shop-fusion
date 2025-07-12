@@ -1,8 +1,14 @@
 import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
+import { useSecurity } from "@/hooks/use-security";
+import {
+  validateEmail,
+  validatePassword,
+  validateRequired,
+} from "@/lib/validation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { X, Eye, EyeOff, Mail, Lock, User } from "lucide-react";
+import { X, Eye, EyeOff, Mail, Lock, User, Shield } from "lucide-react";
 
 interface AuthModalProps {
   isOpen: boolean;
