@@ -24,6 +24,7 @@ export default function Products() {
     sortOrder: "asc",
   });
   const [isLoading, setIsLoading] = useState(false);
+  const { addToCart } = useCart();
 
   // Update URL when filters change
   useEffect(() => {
