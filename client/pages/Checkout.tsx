@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { CheckoutForm } from "@/components/checkout/CheckoutForm";
 import { AuthModal } from "@/components/auth/AuthModal";
+import { BackButton } from "@/components/ui/BackButton";
 import { Link } from "react-router-dom";
 import { ShoppingBag, ArrowLeft, Shield, Lock } from "lucide-react";
 
