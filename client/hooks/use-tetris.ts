@@ -260,6 +260,15 @@ export function useTetris() {
         prev.nextPiece!.position,
       );
 
+      // Play appropriate sound effects
+      if (linesCleared > 0) {
+        sounds.playLineClear();
+      }
+
+      if (gameOver) {
+        setTimeout(() => sounds.playGameOver(), 200);
+      }
+
       return {
         ...prev,
         board: newBoard,
