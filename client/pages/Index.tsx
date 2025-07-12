@@ -56,13 +56,7 @@ export default function Index() {
               >
                 Products
               </Link>
-              {isAuthenticated ? (
-                <span className="text-foreground">Hi, {user?.firstName}!</span>
-              ) : (
-                <button className="text-foreground hover:text-brand-primary">
-                  Sign In
-                </button>
-              )}
+              <AuthButton />
               <CartButton />
             </nav>
           </div>
