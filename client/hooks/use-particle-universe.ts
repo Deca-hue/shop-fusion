@@ -5,6 +5,7 @@ import {
   PhysicsConfig,
   ParticleType,
 } from "@/lib/particle-physics";
+import { useCosmicSounds } from "./use-cosmic-sounds";
 
 export interface UniverseState {
   particleCount: number;
