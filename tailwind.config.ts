@@ -14,6 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
+        sans: ['"Inter"', "sans-serif"],
+        serif: ['"Playfair Display"', "serif"],
         mono: [
           '"SF Mono"',
           '"Monaco"',
@@ -22,8 +24,6 @@ export default {
           '"Source Code Pro"',
           "monospace",
         ],
-        space: ['"Orbitron"', "monospace"],
-        cosmic: ['"Exo 2"', "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -69,27 +69,34 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Cosmic colors
-        cosmic: {
-          purple: "hsl(var(--cosmic-purple))",
-          blue: "hsl(var(--cosmic-blue))",
-          pink: "hsl(var(--cosmic-pink))",
-          teal: "hsl(var(--cosmic-teal))",
-          gold: "hsl(var(--cosmic-gold))",
-          green: "hsl(var(--cosmic-green))",
-          orange: "hsl(var(--cosmic-orange))",
+        // Brand colors
+        brand: {
+          primary: "hsl(var(--brand-primary))",
+          secondary: "hsl(var(--brand-secondary))",
+          accent: "hsl(var(--brand-accent))",
+          warning: "hsl(var(--brand-warning))",
+          error: "hsl(var(--brand-error))",
+          success: "hsl(var(--brand-success))",
         },
-        particle: {
-          star: "hsl(var(--particle-star))",
-          nebula: "hsl(var(--particle-nebula))",
-          comet: "hsl(var(--particle-comet))",
-          galaxy: "hsl(var(--particle-galaxy))",
-          plasma: "hsl(var(--particle-plasma))",
+        product: {
+          sale: "hsl(var(--product-sale))",
+          new: "hsl(var(--product-new))",
+          featured: "hsl(var(--product-featured))",
+          trending: "hsl(var(--product-trending))",
         },
-        space: {
-          void: "hsl(var(--space-void))",
-          deep: "hsl(var(--space-deep))",
-          glow: "hsl(var(--space-glow))",
+        ui: {
+          gray: {
+            50: "hsl(var(--ui-gray-50))",
+            100: "hsl(var(--ui-gray-100))",
+            200: "hsl(var(--ui-gray-200))",
+            300: "hsl(var(--ui-gray-300))",
+            400: "hsl(var(--ui-gray-400))",
+            500: "hsl(var(--ui-gray-500))",
+            600: "hsl(var(--ui-gray-600))",
+            700: "hsl(var(--ui-gray-700))",
+            800: "hsl(var(--ui-gray-800))",
+            900: "hsl(var(--ui-gray-900))",
+          },
         },
       },
       borderRadius: {
