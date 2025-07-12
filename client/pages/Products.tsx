@@ -129,39 +129,66 @@ export default function Products() {
           <div className="mb-4">
             <BackButton to="/" />
           </div>
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-            <div>
-              <h1 className="text-3xl font-serif font-bold text-foreground">
-                All Products
-              </h1>
-              <p className="text-ui-gray-600 mt-2">
-                Discover our complete collection of products
-              </p>
-            </div>
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+            <div className="flex-1">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+                <div>
+                  <h1 className="text-3xl font-serif font-bold text-foreground">
+                    All Products
+                  </h1>
+                  <p className="text-ui-gray-600 mt-2">
+                    Discover our complete collection of products (
+                    {filteredProducts.length} items)
+                  </p>
+                </div>
 
-            {/* Search Bar */}
-            <div className="lg:max-w-md lg:flex-1">
-              <form onSubmit={handleSearchSubmit} className="relative">
-                <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-ui-gray-400 w-5 h-5" />
-                  <input
-                    type="text"
-                    placeholder="Search products..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="search-input pl-10 pr-10"
-                  />
-                  {searchQuery && (
-                    <button
-                      type="button"
-                      onClick={clearSearch}
-                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-ui-gray-400 hover:text-ui-gray-600"
+                {/* Action Buttons */}
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button
+                    onClick={showAllProducts}
+                    variant="outline"
+                    className="whitespace-nowrap"
+                  >
+                    <Package className="w-4 h-4 mr-2" />
+                    Show All Products
+                  </Button>
+
+                  {availableProductsCount > 0 && (
+                    <Button
+                      onClick={addAllToCart}
+                      className="bg-brand-primary hover:bg-brand-primary/90 whitespace-nowrap"
                     >
-                      <X className="w-5 h-5" />
-                    </button>
+                      <ShoppingCart className="w-4 h-4 mr-2" />
+                      Add All to Cart ({availableProductsCount})
+                    </Button>
                   )}
                 </div>
-              </form>
+              </div>
+
+              {/* Search Bar */}
+              <div className="max-w-md">
+                <form onSubmit={handleSearchSubmit} className="relative">
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-ui-gray-400 w-5 h-5" />
+                    <input
+                      type="text"
+                      placeholder="Search products..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="search-input pl-10 pr-10"
+                    />
+                    {searchQuery && (
+                      <button
+                        type="button"
+                        onClick={clearSearch}
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-ui-gray-400 hover:text-ui-gray-600"
+                      >
+                        <X className="w-5 h-5" />
+                      </button>
+                    )}
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
 
