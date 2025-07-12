@@ -23,7 +23,7 @@ export function TetrisGame({ className }: TetrisGameProps) {
   const board = getBoardWithCurrentPiece();
 
   return (
-    <div className={cn("w-full max-w-md mx-auto", className)}>
+    <div className={cn("w-full max-w-md mx-auto scanlines", className)}>
       {/* Game header */}
       <div className="text-center mb-6">
         <h1 className="retro-text text-2xl text-neon-cyan neon-pulse mb-2">
@@ -34,7 +34,7 @@ export function TetrisGame({ className }: TetrisGameProps) {
 
       {/* Game status */}
       {gameState.gameOver && (
-        <div className="text-center mb-4 p-4 bg-retro-dark border border-neon-pink rounded-lg">
+        <div className="text-center mb-4 p-4 bg-retro-dark border border-neon-pink rounded-lg game-over-shake">
           <h2 className="retro-text text-lg text-neon-pink mb-2 retro-blink">
             GAME OVER
           </h2>
@@ -53,19 +53,28 @@ export function TetrisGame({ className }: TetrisGameProps) {
       )}
 
       {/* Game layout */}
-      <div className="grid grid-cols-1 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:gap-6">
         {/* Top row - Stats and Next piece */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 sm:gap-6">
           <GameStats
             score={gameState.score}
             lines={gameState.lines}
             level={gameState.level}
+            className="order-1"
           />
-          <NextPiece piece={gameState.nextPiece} />
+          <NextPiece piece={gameState.nextPiece} className="order-2" />
         </div>
 
         {/* Main game board */}
-        <GameBoard board={board} className="mx-auto" />
+        <div className="flex justify-center">
+          <GameBoard
+            board={board}
+            className={cn(
+              "transition-all duration-300",
+              gameState.gameOver && "game-over-shake",
+            )}
+          />
+        </div>
 
         {/* Controls */}
         <GameControls
@@ -79,6 +88,7 @@ export function TetrisGame({ className }: TetrisGameProps) {
           isPlaying={gameState.isPlaying}
           isPaused={gameState.isPaused}
           gameOver={gameState.gameOver}
+          className="order-4"
         />
       </div>
 
