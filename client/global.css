@@ -11,71 +11,80 @@
    * A different format will require also updating the theme in tailwind.config.ts.
   */
   :root {
-    /* Modern ecommerce theme */
+    /* Premium luxury ecommerce theme */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 222 25% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 222 25% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 222 25% 12%;
 
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 220 60% 18%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 220 15% 95%;
+    --secondary-foreground: 222 25% 12%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 15% 95%;
+    --muted-foreground: 220 10% 46%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 45 93% 47%;
+    --accent-foreground: 220 60% 18%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 45 93% 47%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-background: 220 15% 97%;
+    --sidebar-foreground: 220 25% 20%;
+    --sidebar-primary: 220 60% 18%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 220 15% 93%;
+    --sidebar-accent-foreground: 220 25% 20%;
+    --sidebar-border: 220 13% 88%;
+    --sidebar-ring: 45 93% 47%;
 
-    /* Ecommerce brand colors */
-    --brand-primary: 221.2 83.2% 53.3%;
-    --brand-secondary: 210 40% 96.1%;
-    --brand-accent: 142.1 76.2% 36.3%;
-    --brand-warning: 38 92% 50%;
-    --brand-error: 0 84.2% 60.2%;
-    --brand-success: 142.1 76.2% 36.3%;
+    /* Premium brand colors */
+    --brand-primary: 220 60% 18%; /* Deep Navy */
+    --brand-secondary: 220 15% 95%; /* Platinum */
+    --brand-accent: 45 93% 47%; /* Gold */
+    --brand-warning: 25 95% 53%; /* Premium Orange */
+    --brand-error: 0 72% 51%; /* Refined Red */
+    --brand-success: 142 71% 45%; /* Emerald */
 
-    /* Product colors */
-    --product-sale: 0 84.2% 60.2%;
-    --product-new: 142.1 76.2% 36.3%;
-    --product-featured: 38 92% 50%;
-    --product-trending: 221.2 83.2% 53.3%;
+    /* Premium product colors */
+    --product-sale: 348 83% 47%; /* Ruby Red */
+    --product-new: 162 73% 46%; /* Teal */
+    --product-featured: 45 93% 47%; /* Gold */
+    --product-trending: 262 83% 58%; /* Royal Purple */
+    --product-unavailable: 220 10% 46%; /* Muted Gray */
 
-    /* UI colors */
-    --ui-gray-50: 210 40% 98%;
-    --ui-gray-100: 210 40% 96.1%;
-    --ui-gray-200: 214.3 31.8% 91.4%;
-    --ui-gray-300: 212.7 26.8% 83.9%;
-    --ui-gray-400: 215.4 16.3% 46.9%;
-    --ui-gray-500: 215 20.2% 65.1%;
-    --ui-gray-600: 215 25.1% 40.9%;
-    --ui-gray-700: 217.2 32.6% 17.5%;
-    --ui-gray-800: 222.2 47.4% 11.2%;
-    --ui-gray-900: 222.2 84% 4.9%;
+    /* Premium UI colors */
+    --ui-gray-50: 220 15% 98%;
+    --ui-gray-100: 220 15% 95%;
+    --ui-gray-200: 220 13% 91%;
+    --ui-gray-300: 220 12% 84%;
+    --ui-gray-400: 220 10% 46%;
+    --ui-gray-500: 220 13% 35%;
+    --ui-gray-600: 220 20% 25%;
+    --ui-gray-700: 220 25% 20%;
+    --ui-gray-800: 220 30% 15%;
+    --ui-gray-900: 222 25% 12%;
+
+    /* Luxury gradient colors */
+    --gradient-gold-start: 45 93% 47%;
+    --gradient-gold-end: 51 100% 50%;
+    --gradient-navy-start: 220 60% 18%;
+    --gradient-navy-end: 225 71% 28%;
+    --gradient-purple-start: 262 83% 58%;
+    --gradient-purple-end: 270 91% 65%;
   }
 
   .dark {
