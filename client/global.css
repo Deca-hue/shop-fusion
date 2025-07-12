@@ -196,4 +196,104 @@
   .retro-blink {
     animation: retro-blink 1s infinite;
   }
+
+  @keyframes line-clear {
+    0% {
+      background: currentColor;
+      transform: scaleY(1);
+    }
+    50% {
+      background: white;
+      transform: scaleY(1.2);
+    }
+    100% {
+      background: transparent;
+      transform: scaleY(0);
+    }
+  }
+
+  .line-clear-animation {
+    animation: line-clear 0.5s ease-in-out;
+  }
+
+  @keyframes piece-land {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .piece-land {
+    animation: piece-land 0.2s ease-out;
+  }
+
+  @keyframes game-over-shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: translateX(-2px);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+      transform: translateX(2px);
+    }
+  }
+
+  .game-over-shake {
+    animation: game-over-shake 0.6s ease-in-out;
+  }
+
+  @keyframes scanlines {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100vh);
+    }
+  }
+
+  .scanlines::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 255, 255, 0.5),
+      transparent
+    );
+    animation: scanlines 3s linear infinite;
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  @keyframes grid-glow {
+    0%,
+    100% {
+      opacity: 0.1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+  }
+
+  .grid-glow {
+    animation: grid-glow 2s ease-in-out infinite;
+  }
 }
