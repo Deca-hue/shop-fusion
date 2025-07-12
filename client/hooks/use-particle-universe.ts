@@ -26,6 +26,8 @@ export function useParticleUniverse(
   const raycasterRef = useRef<THREE.Raycaster>(new THREE.Raycaster());
   const clockRef = useRef<THREE.Clock>(new THREE.Clock());
 
+  const sounds = useCosmicSounds();
+
   const [universeState, setUniverseState] = useState<UniverseState>({
     particleCount: 0,
     attractors: 0,
