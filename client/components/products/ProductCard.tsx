@@ -59,8 +59,8 @@ export function ProductCard({
         {product.isNew && <div className="badge-new">NEW</div>}
         {product.featured && <div className="badge-featured">FEATURED</div>}
         {!product.inStock && (
-          <div className="bg-ui-gray-500 text-white px-2 py-1 text-xs font-medium rounded-full">
-            OUT OF STOCK
+          <div className="bg-product-unavailable text-white px-2 py-1 text-xs font-medium rounded-full">
+            UNAVAILABLE
           </div>
         )}
       </div>
