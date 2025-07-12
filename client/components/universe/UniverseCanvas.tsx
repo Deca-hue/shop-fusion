@@ -3,17 +3,17 @@ import { cn } from "@/lib/utils";
 
 interface UniverseCanvasProps {
   className?: string;
-  onStateChange?: (state: any) => void;
   universeState?: any;
 }
 
-export const UniverseCanvas = forwardRef<HTMLCanvasElement, UniverseCanvasProps>(
-  ({ className, universeState }, ref) => {
-
+export const UniverseCanvas = forwardRef<
+  HTMLCanvasElement,
+  UniverseCanvasProps
+>(({ className, universeState }, ref) => {
   return (
     <div className={cn("relative w-full h-full overflow-hidden", className)}>
       <canvas
-        ref={canvasRef}
+        ref={ref}
         className="absolute inset-0 w-full h-full cursor-crosshair"
         style={{
           background: "linear-gradient(135deg, #0a0a15 0%, #1a1a2e 100%)",
@@ -33,36 +33,42 @@ export const UniverseCanvas = forwardRef<HTMLCanvasElement, UniverseCanvasProps>
       </div>
 
       {/* Particle count display */}
-      <div className="absolute top-4 right-4 pointer-events-none">
-        <div className="bg-space-deep/80 backdrop-blur-sm border border-cosmic-teal/30 rounded-lg p-3">
-          <div className="text-cosmic-teal text-sm font-space">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-cosmic-teal rounded-full animate-pulse" />
-              <span>{universeState.particleCount} particles</span>
-            </div>
-            <div className="text-cosmic-gold text-xs mt-1">
-              {universeState.attractors} attractors
+      {universeState && (
+        <div className="absolute top-4 right-4 pointer-events-none">
+          <div className="bg-space-deep/80 backdrop-blur-sm border border-cosmic-teal/30 rounded-lg p-3">
+            <div className="text-cosmic-teal text-sm font-space">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-cosmic-teal rounded-full animate-pulse" />
+                <span>{universeState.particleCount || 0} particles</span>
+              </div>
+              <div className="text-cosmic-gold text-xs mt-1">
+                {universeState.attractors || 0} attractors
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Status indicator */}
-      <div className="absolute bottom-4 left-4 pointer-events-none">
-        <div className="bg-space-deep/80 backdrop-blur-sm border border-cosmic-green/30 rounded-lg p-2">
-          <div className="flex items-center gap-2 text-cosmic-green text-sm font-space">
-            <div
-              className={cn(
-                "w-2 h-2 rounded-full",
-                universeState.isPlaying
-                  ? "bg-cosmic-green animate-pulse"
-                  : "bg-cosmic-orange",
-              )}
-            />
-            <span>{universeState.isPlaying ? "ACTIVE" : "PAUSED"}</span>
+      {universeState && (
+        <div className="absolute bottom-4 left-4 pointer-events-none">
+          <div className="bg-space-deep/80 backdrop-blur-sm border border-cosmic-green/30 rounded-lg p-2">
+            <div className="flex items-center gap-2 text-cosmic-green text-sm font-space">
+              <div
+                className={cn(
+                  "w-2 h-2 rounded-full",
+                  universeState.isPlaying
+                    ? "bg-cosmic-green animate-pulse"
+                    : "bg-cosmic-orange",
+                )}
+              />
+              <span>{universeState.isPlaying ? "ACTIVE" : "PAUSED"}</span>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
-}
+});
+
+UniverseCanvas.displayName = "UniverseCanvas";
