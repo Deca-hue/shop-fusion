@@ -182,8 +182,15 @@ export function useParticleUniverse(
         (Math.random() - 0.5) * 40,
       );
       universeRef.current.createExplosion(center, count, type);
+
+      // Play appropriate sound
+      if (type === "star") {
+        sounds.playStarExplosion();
+      } else if (type === "plasma") {
+        sounds.playPlasmaExplosion();
+      }
     },
-    [],
+    [sounds],
   );
 
   const createGalaxy = useCallback(() => {
