@@ -8,7 +8,7 @@ export const mockCategories: Category[] = [
     description: "Latest gadgets and electronic devices",
     image:
       "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=300&h=200&fit=crop",
-    productCount: 45,
+    productCount: 15,
     subcategories: [
       {
         id: "smartphones",
@@ -18,7 +18,7 @@ export const mockCategories: Category[] = [
         image:
           "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&h=200&fit=crop",
         parentId: "electronics",
-        productCount: 15,
+        productCount: 8,
       },
       {
         id: "laptops",
@@ -28,7 +28,7 @@ export const mockCategories: Category[] = [
         image:
           "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=300&h=200&fit=crop",
         parentId: "electronics",
-        productCount: 12,
+        productCount: 5,
       },
       {
         id: "audio",
@@ -38,7 +38,7 @@ export const mockCategories: Category[] = [
         image:
           "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=200&fit=crop",
         parentId: "electronics",
-        productCount: 18,
+        productCount: 6,
       },
     ],
   },
@@ -49,7 +49,7 @@ export const mockCategories: Category[] = [
     description: "Trendy clothing and accessories",
     image:
       "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=200&fit=crop",
-    productCount: 67,
+    productCount: 12,
     subcategories: [
       {
         id: "mens",
@@ -59,7 +59,7 @@ export const mockCategories: Category[] = [
         image:
           "https://images.unsplash.com/photo-1516826957135-700dedea698c?w=300&h=200&fit=crop",
         parentId: "fashion",
-        productCount: 25,
+        productCount: 4,
       },
       {
         id: "womens",
@@ -69,7 +69,7 @@ export const mockCategories: Category[] = [
         image:
           "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=300&h=200&fit=crop",
         parentId: "fashion",
-        productCount: 32,
+        productCount: 3,
       },
       {
         id: "accessories",
@@ -79,7 +79,7 @@ export const mockCategories: Category[] = [
         image:
           "https://images.unsplash.com/photo-1609081219090-a6d81d3085bf?w=300&h=200&fit=crop",
         parentId: "fashion",
-        productCount: 10,
+        productCount: 5,
       },
     ],
   },
@@ -90,7 +90,7 @@ export const mockCategories: Category[] = [
     description: "Everything for your home and garden",
     image:
       "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=200&fit=crop",
-    productCount: 34,
+    productCount: 6,
   },
   {
     id: "sports",
@@ -99,7 +99,25 @@ export const mockCategories: Category[] = [
     description: "Sports equipment and fitness gear",
     image:
       "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop",
-    productCount: 28,
+    productCount: 4,
+  },
+  {
+    id: "toys",
+    name: "Toys & Games",
+    slug: "toys",
+    description: "Educational toys and games for all ages",
+    image:
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    productCount: 1,
+  },
+  {
+    id: "beauty",
+    name: "Beauty & Personal Care",
+    slug: "beauty",
+    description: "Skincare, makeup, and personal care products",
+    image:
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=300&h=200&fit=crop",
+    productCount: 1,
   },
 ];
 
