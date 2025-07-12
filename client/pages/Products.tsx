@@ -9,6 +9,7 @@ import {
   sortProducts,
 } from "@/lib/mock-data";
 import { ProductGrid } from "@/components/products/ProductGrid";
+import { BackButton } from "@/components/ui/BackButton";
 import { cn } from "@/lib/utils";
 import { Search, X } from "lucide-react";
 
