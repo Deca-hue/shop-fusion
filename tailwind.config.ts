@@ -83,6 +83,7 @@ export default {
           new: "hsl(var(--product-new))",
           featured: "hsl(var(--product-featured))",
           trending: "hsl(var(--product-trending))",
+          unavailable: "hsl(var(--product-unavailable))",
         },
         ui: {
           gray: {
