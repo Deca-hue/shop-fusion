@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -11,68 +11,66 @@
    * A different format will require also updating the theme in tailwind.config.ts.
   */
   :root {
-    /* Retro dark theme base */
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+    /* Deep space theme */
+    --background: 220 25% 4%;
+    --foreground: 210 40% 95%;
 
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
+    --card: 220 20% 8%;
+    --card-foreground: 210 40% 95%;
 
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 220 20% 8%;
+    --popover-foreground: 210 40% 95%;
 
-    --primary: 200 98% 39%;
-    --primary-foreground: 240 10% 3.9%;
+    --primary: 258 90% 66%;
+    --primary-foreground: 220 25% 4%;
 
-    --secondary: 240 4.8% 15.9%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 210 40% 95%;
 
-    --muted: 240 5.9% 10%;
-    --muted-foreground: 240 4.4% 58%;
+    --muted: 220 15% 12%;
+    --muted-foreground: 220 15% 60%;
 
-    --accent: 240 4.8% 15.9%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 280 70% 55%;
+    --accent-foreground: 220 25% 4%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 80% 65%;
+    --destructive-foreground: 220 25% 4%;
 
-    --border: 240 5.9% 20%;
-    --input: 240 5.9% 20%;
-    --ring: 200 98% 39%;
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 258 90% 66%;
 
-    --radius: 0.25rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 240 10% 3.9%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 200 98% 39%;
-    --sidebar-primary-foreground: 240 10% 3.9%;
-    --sidebar-accent: 240 4.8% 15.9%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 240 5.9% 20%;
-    --sidebar-ring: 200 98% 39%;
+    --sidebar-background: 220 25% 4%;
+    --sidebar-foreground: 210 40% 95%;
+    --sidebar-primary: 258 90% 66%;
+    --sidebar-primary-foreground: 220 25% 4%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 210 40% 95%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 258 90% 66%;
 
-    /* Neon colors for retro effects */
-    --neon-cyan: 180 100% 50%;
-    --neon-pink: 322 84% 64%;
-    --neon-green: 120 100% 50%;
-    --neon-yellow: 60 100% 50%;
-    --neon-purple: 270 100% 50%;
-    --neon-blue: 240 100% 50%;
-    --neon-orange: 30 100% 50%;
+    /* Cosmic colors */
+    --cosmic-purple: 258 90% 66%;
+    --cosmic-blue: 200 100% 70%;
+    --cosmic-pink: 320 85% 75%;
+    --cosmic-teal: 180 100% 60%;
+    --cosmic-gold: 45 100% 70%;
+    --cosmic-green: 120 85% 65%;
+    --cosmic-orange: 25 100% 70%;
 
-    /* Tetris block colors */
-    --tetris-I: 180 100% 50%; /* Cyan - I piece */
-    --tetris-O: 60 100% 50%; /* Yellow - O piece */
-    --tetris-T: 270 100% 50%; /* Purple - T piece */
-    --tetris-S: 120 100% 50%; /* Green - S piece */
-    --tetris-Z: 0 100% 50%; /* Red - Z piece */
-    --tetris-J: 240 100% 50%; /* Blue - J piece */
-    --tetris-L: 30 100% 50%; /* Orange - L piece */
+    /* Particle colors */
+    --particle-star: 45 100% 85%;
+    --particle-nebula: 280 70% 70%;
+    --particle-comet: 200 100% 80%;
+    --particle-galaxy: 320 85% 75%;
+    --particle-plasma: 180 100% 75%;
 
-    /* Retro background colors */
-    --retro-dark: 240 10% 3.9%;
-    --retro-darker: 240 10% 1.9%;
-    --retro-grid: 240 5.9% 20%;
+    /* Space background */
+    --space-void: 220 25% 2%;
+    --space-deep: 220 25% 4%;
+    --space-glow: 258 90% 66%;
   }
 
   .dark {
