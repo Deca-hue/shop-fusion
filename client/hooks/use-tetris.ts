@@ -126,6 +126,8 @@ export function useTetris() {
       if (
         isValidPosition(prev.board, rotatedPiece, prev.currentPiece.position)
       ) {
+        sounds.playRotate();
+
         return {
           ...prev,
           currentPiece: rotatedPiece,
@@ -134,7 +136,7 @@ export function useTetris() {
 
       return prev;
     });
-  }, []);
+  }, [sounds]);
 
   // Hard drop
   const hardDrop = useCallback(() => {
