@@ -10,8 +10,10 @@ import {
 } from "@/lib/mock-data";
 import { ProductGrid } from "@/components/products/ProductGrid";
 import { BackButton } from "@/components/ui/BackButton";
+import { Button } from "@/components/ui/button";
+import { useCart } from "@/contexts/CartContext";
 import { cn } from "@/lib/utils";
-import { Search, X } from "lucide-react";
+import { Search, X, ShoppingCart, Package } from "lucide-react";
 
 export default function Products() {
   const [searchParams, setSearchParams] = useSearchParams();
