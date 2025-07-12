@@ -103,6 +103,24 @@ export default function Products() {
     setSearchQuery("");
   };
 
+  const addAllToCart = () => {
+    const availableProducts = filteredProducts.filter(
+      (product) => product.inStock,
+    );
+    availableProducts.forEach((product) => {
+      addToCart(product, 1);
+    });
+  };
+
+  const showAllProducts = () => {
+    setSearchQuery("");
+    setFilters({ sortBy: "name", sortOrder: "asc" });
+  };
+
+  const availableProductsCount = filteredProducts.filter(
+    (product) => product.inStock,
+  ).length;
+
   return (
     <div className="min-h-screen bg-ui-gray-50">
       {/* Header */}
