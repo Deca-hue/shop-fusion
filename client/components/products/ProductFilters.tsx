@@ -294,7 +294,22 @@ export function ProductFilters({
                     htmlFor="in-stock"
                     className="text-sm cursor-pointer hover:text-brand-primary"
                   >
-                    In Stock Only
+                    ✓ In Stock Only
+                  </label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox
+                    id="unavailable"
+                    checked={filters.inStock === false}
+                    onCheckedChange={(checked) =>
+                      handleAvailabilityChange(false, !!checked)
+                    }
+                  />
+                  <label
+                    htmlFor="unavailable"
+                    className="text-sm cursor-pointer hover:text-product-unavailable"
+                  >
+                    ✗ Show Unavailable Items
                   </label>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -307,7 +322,7 @@ export function ProductFilters({
                     htmlFor="on-sale"
                     className="text-sm cursor-pointer hover:text-brand-primary"
                   >
-                    On Sale
+                    🏷️ On Sale
                   </label>
                 </div>
               </div>
