@@ -13,6 +13,17 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        mono: [
+          '"SF Mono"',
+          '"Monaco"',
+          '"Inconsolata"',
+          '"Roboto Mono"',
+          '"Source Code Pro"',
+          "monospace",
+        ],
+        retro: ['"Press Start 2P"', "monospace"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -56,6 +67,32 @@ export default {
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
+        },
+        // Retro gaming colors
+        neon: {
+          cyan: "hsl(var(--neon-cyan))",
+          pink: "hsl(var(--neon-pink))",
+          green: "hsl(var(--neon-green))",
+          yellow: "hsl(var(--neon-yellow))",
+          purple: "hsl(var(--neon-purple))",
+          blue: "hsl(var(--neon-blue))",
+          orange: "hsl(var(--neon-orange))",
+        },
+        tetris: {
+          block: {
+            I: "hsl(var(--tetris-I))", // Cyan
+            O: "hsl(var(--tetris-O))", // Yellow
+            T: "hsl(var(--tetris-T))", // Purple
+            S: "hsl(var(--tetris-S))", // Green
+            Z: "hsl(var(--tetris-Z))", // Red
+            J: "hsl(var(--tetris-J))", // Blue
+            L: "hsl(var(--tetris-L))", // Orange
+          },
+        },
+        retro: {
+          dark: "hsl(var(--retro-dark))",
+          darker: "hsl(var(--retro-darker))",
+          grid: "hsl(var(--retro-grid))",
         },
       },
       borderRadius: {
