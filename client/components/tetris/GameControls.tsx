@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useEffect, useRef } from "react";
 import {
   RotateCw,
   ArrowLeft,
@@ -37,6 +38,11 @@ export function GameControls({
   gameOver,
   className,
 }: GameControlsProps) {
+  const swipeAreaRef = useRef<HTMLDivElement>(null);
+  const touchStartRef = useRef<{ x: number; y: number; time: number } | null>(
+    null,
+  );
+
   const handleTouchStart = (callback: () => void) => {
     return (e: React.TouchEvent) => {
       e.preventDefault();
@@ -44,8 +50,86 @@ export function GameControls({
     };
   };
 
+  // Add swipe gesture support for the game area
+  useEffect(() => {
+    const swipeArea = swipeAreaRef.current;
+    if (!swipeArea || !isPlaying || gameOver) return;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      touchStartRef.current = {
+        x: touch.clientX,
+        y: touch.clientY,
+        time: Date.now(),
+      };
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (!touchStartRef.current) return;
+
+      const touch = e.changedTouches[0];
+      const deltaX = touch.clientX - touchStartRef.current.x;
+      const deltaY = touch.clientY - touchStartRef.current.y;
+      const deltaTime = Date.now() - touchStartRef.current.time;
+
+      // Only process quick swipes (under 300ms)
+      if (deltaTime > 300) {
+        touchStartRef.current = null;
+        return;
+      }
+
+      const minSwipeDistance = 50;
+      const absX = Math.abs(deltaX);
+      const absY = Math.abs(deltaY);
+
+      if (absX > minSwipeDistance || absY > minSwipeDistance) {
+        if (absX > absY) {
+          // Horizontal swipe
+          if (deltaX > 0) {
+            onMoveRight();
+          } else {
+            onMoveLeft();
+          }
+        } else {
+          // Vertical swipe
+          if (deltaY > 0) {
+            onMoveDown();
+          } else {
+            onRotate();
+          }
+        }
+      } else {
+        // Short tap - rotate
+        onRotate();
+      }
+
+      touchStartRef.current = null;
+    };
+
+    swipeArea.addEventListener("touchstart", handleTouchStart, {
+      passive: false,
+    });
+    swipeArea.addEventListener("touchend", handleTouchEnd, { passive: false });
+
+    return () => {
+      swipeArea.removeEventListener("touchstart", handleTouchStart);
+      swipeArea.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [isPlaying, gameOver, onMoveLeft, onMoveRight, onMoveDown, onRotate]);
+
   return (
     <div className={cn("space-y-4", className)}>
+      {/* Invisible swipe area */}
+      {isPlaying && !gameOver && (
+        <div
+          ref={swipeAreaRef}
+          className="h-16 bg-retro-dark/30 border border-neon-cyan/30 rounded-lg mb-4 flex items-center justify-center"
+        >
+          <p className="text-xs text-muted-foreground text-center px-4">
+            Swipe: ← → ↓ (move) ↑ (rotate) • Tap (rotate)
+          </p>
+        </div>
+      )}
       {/* Game state controls */}
       <div className="flex gap-2 justify-center">
         {!isPlaying || gameOver ? (
