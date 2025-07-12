@@ -169,7 +169,8 @@ export function useParticleUniverse(
       );
       universeRef.current.createParticle(position, velocity, "nebula");
     }
-  }, []);
+    sounds.playNebulaWhoosh();
+  }, [sounds]);
 
   // Control functions
   const createExplosion = useCallback(
