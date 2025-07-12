@@ -307,6 +307,39 @@
     -webkit-text-fill-color: transparent;
   }
 
+  .gradient-gold {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--gradient-gold-start)),
+      hsl(var(--gradient-gold-end))
+    );
+  }
+
+  .gradient-navy {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--gradient-navy-start)),
+      hsl(var(--gradient-navy-end))
+    );
+  }
+
+  .gradient-purple {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--gradient-purple-start)),
+      hsl(var(--gradient-purple-end))
+    );
+  }
+
+  .gradient-luxury {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--gradient-navy-start)),
+      hsl(var(--gradient-purple-start)),
+      hsl(var(--gradient-gold-start))
+    );
+  }
+
   /* Glass morphism utilities */
   .glass {
     background: rgba(255, 255, 255, 0.1);
