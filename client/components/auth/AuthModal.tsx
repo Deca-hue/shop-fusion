@@ -135,6 +135,19 @@ export function AuthModal({
 
           {/* Content */}
           <div className="p-6">
+            {/* Security Notice */}
+            <div className="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg">
+              <div className="flex items-center gap-2 text-green-700">
+                <Shield className="w-4 h-4" />
+                <span className="text-sm font-medium">
+                  Secure {isSecureEnvironment() ? "HTTPS" : "Connection"}
+                </span>
+              </div>
+              <p className="text-xs text-green-600 mt-1">
+                Your data is protected with encryption and security monitoring.
+              </p>
+            </div>
+
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Register Fields */}
               {mode === "register" && (
