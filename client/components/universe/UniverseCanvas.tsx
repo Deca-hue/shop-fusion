@@ -1,36 +1,14 @@
-import { useEffect, useRef } from "react";
-import { useParticleUniverse } from "@/hooks/use-particle-universe";
+import { forwardRef } from "react";
 import { cn } from "@/lib/utils";
 
 interface UniverseCanvasProps {
   className?: string;
   onStateChange?: (state: any) => void;
+  universeState?: any;
 }
 
-export function UniverseCanvas({
-  className,
-  onStateChange,
-}: UniverseCanvasProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const {
-    universeState,
-    initializeScene,
-    createExplosion,
-    createGalaxy,
-    addAttractor,
-    clearUniverse,
-    togglePlay,
-    updateConfig,
-  } = useParticleUniverse(canvasRef);
-
-  useEffect(() => {
-    const cleanup = initializeScene();
-    return cleanup;
-  }, [initializeScene]);
-
-  useEffect(() => {
-    onStateChange?.(universeState);
-  }, [universeState, onStateChange]);
+export const UniverseCanvas = forwardRef<HTMLCanvasElement, UniverseCanvasProps>(
+  ({ className, universeState }, ref) => {
 
   return (
     <div className={cn("relative w-full h-full overflow-hidden", className)}>
