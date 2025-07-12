@@ -82,7 +82,10 @@ export function ProductCard({
         <img
           src={product.images[imageIndex]}
           alt={product.name}
-          className="product-image group-hover:scale-105 transition-transform duration-300"
+          className={cn(
+            "product-image group-hover:scale-105 transition-transform duration-300",
+            !product.inStock && "grayscale opacity-60",
+          )}
         />
 
         {/* Quick Actions Overlay */}
