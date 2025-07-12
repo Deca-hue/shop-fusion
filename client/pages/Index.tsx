@@ -5,7 +5,6 @@ import { AuthButton } from "@/components/auth/AuthButton";
 import { Link } from "react-router-dom";
 
 export default function Index() {
-  const { user, isAuthenticated } = useAuth();
   const featuredProducts = getFeaturedProducts();
 
   return (
