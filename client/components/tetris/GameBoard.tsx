@@ -15,15 +15,16 @@ export function GameBoard({ board, className }: GameBoardProps) {
         className,
       )}
     >
-      <div className="grid grid-cols-10 gap-[1px]">
+      <div className="grid grid-cols-10 gap-[1px] w-full max-w-[300px] sm:max-w-[320px] mx-auto">
         {board.map((row, rowIndex) =>
           row.map((cell, colIndex) => (
             <div
               key={`${rowIndex}-${colIndex}`}
               className={cn(
-                "tetris-block aspect-square w-6 h-6 rounded-sm transition-all duration-150",
+                "tetris-block aspect-square rounded-sm transition-all duration-150",
+                "w-[26px] h-[26px] sm:w-[30px] sm:h-[30px]",
                 cell
-                  ? cn(TETROMINO_COLORS[cell], "neon-glow")
+                  ? cn(TETROMINO_COLORS[cell], "neon-glow piece-land")
                   : "bg-retro-darker/50 border border-retro-grid/30",
               )}
             />
