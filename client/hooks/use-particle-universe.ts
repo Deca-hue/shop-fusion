@@ -206,7 +206,8 @@ export function useParticleUniverse(
       3 + Math.floor(Math.random() * 3),
       80,
     );
-  }, []);
+    sounds.playGalaxyCreation();
+  }, [sounds]);
 
   const addAttractor = useCallback((position?: THREE.Vector3) => {
     if (!universeRef.current) return;
