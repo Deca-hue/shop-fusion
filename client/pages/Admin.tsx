@@ -193,10 +193,24 @@ export default function Admin() {
     e.preventDefault();
     setIsUpdating(true);
 
-    // Validate email format
+    // Validate current email
+    if (emailForm.currentEmail !== adminCredentials.email) {
+      alert("Current email is incorrect");
+      setIsUpdating(false);
+      return;
+    }
+
+    // Validate new email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(emailForm.newEmail)) {
       alert("Please enter a valid email address");
+      setIsUpdating(false);
+      return;
+    }
+
+    // Check if new email is different from current
+    if (emailForm.newEmail === adminCredentials.email) {
+      alert("New email must be different from current email");
       setIsUpdating(false);
       return;
     }
@@ -210,6 +224,12 @@ export default function Admin() {
       ...prev,
       email: emailForm.newEmail,
     }));
+
+    // Clear form
+    setEmailForm({
+      currentEmail: "",
+      newEmail: "",
+    });
 
     setIsUpdating(false);
     alert(
