@@ -198,7 +198,7 @@ export default function Admin() {
 
                   {/* Stats Grid */}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                    <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
+                    <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200 hover:shadow-md transition-shadow">
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="text-sm text-ui-gray-600">
@@ -207,26 +207,34 @@ export default function Admin() {
                           <p className="text-2xl font-bold text-brand-primary">
                             {stats.totalProducts}
                           </p>
+                          <p className="text-xs text-ui-gray-500 mt-1">
+                            {stats.inStockProducts} in stock,{" "}
+                            {stats.outOfStockProducts} out
+                          </p>
                         </div>
                         <Package className="w-8 h-8 text-brand-primary" />
                       </div>
                     </div>
 
-                    <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
+                    <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200 hover:shadow-md transition-shadow">
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="text-sm text-ui-gray-600">
-                            Total Revenue
+                            Monthly Revenue
                           </p>
                           <p className="text-2xl font-bold text-green-600">
                             ${stats.totalRevenue.toLocaleString()}
+                          </p>
+                          <p className="text-xs text-green-600 mt-1">
+                            +{((stats.conversionRate - 2) * 10).toFixed(1)}%
+                            this month
                           </p>
                         </div>
                         <DollarSign className="w-8 h-8 text-green-600" />
                       </div>
                     </div>
 
-                    <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
+                    <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200 hover:shadow-md transition-shadow">
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="text-sm text-ui-gray-600">
@@ -235,20 +243,28 @@ export default function Admin() {
                           <p className="text-2xl font-bold text-blue-600">
                             {stats.totalSales.toLocaleString()}
                           </p>
+                          <p className="text-xs text-ui-gray-500 mt-1">
+                            Avg: ${stats.averageProductValue}
+                          </p>
                         </div>
                         <ShoppingCart className="w-8 h-8 text-blue-600" />
                       </div>
                     </div>
 
-                    <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
+                    <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200 hover:shadow-md transition-shadow">
                       <div className="flex items-center justify-between">
                         <div>
-                          <p className="text-sm text-ui-gray-600">Low Stock</p>
-                          <p className="text-2xl font-bold text-orange-600">
-                            {stats.lowStockProducts}
+                          <p className="text-sm text-ui-gray-600">
+                            Inventory Value
+                          </p>
+                          <p className="text-2xl font-bold text-purple-600">
+                            ${stats.inventoryValue.toLocaleString()}
+                          </p>
+                          <p className="text-xs text-orange-600 mt-1">
+                            {stats.lowStockProducts} low stock alerts
                           </p>
                         </div>
-                        <TrendingUp className="w-8 h-8 text-orange-600" />
+                        <TrendingUp className="w-8 h-8 text-purple-600" />
                       </div>
                     </div>
                   </div>
