@@ -14,6 +14,7 @@ import Checkout from "./pages/Checkout";
 import Admin from "./pages/Admin";
 import About from "./pages/About";
 import Settings from "./pages/Settings";
+import Orders from "./pages/Orders";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
