@@ -639,6 +639,249 @@ export default function Admin() {
               </div>
             )}
 
+            {/* Security Management */}
+            {activeTab === "security" && (
+              <div className="space-y-6">
+                <div>
+                  <h2 className="text-2xl font-bold mb-6">
+                    Security Management
+                  </h2>
+                  <p className="text-ui-gray-600 mb-8">
+                    Manage admin access credentials and security settings
+                  </p>
+                </div>
+
+                {/* Admin Credentials */}
+                <div className="bg-white rounded-lg shadow-sm border border-ui-gray-200 p-6">
+                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <Settings className="w-5 h-5" />
+                    Admin Login Credentials
+                  </h3>
+                  <div className="bg-brand-primary/5 border border-brand-primary/20 rounded-lg p-4 mb-6">
+                    <div className="flex items-start gap-3">
+                      <AlertTriangle className="w-5 h-5 text-brand-primary mt-0.5" />
+                      <div>
+                        <h4 className="font-medium text-brand-primary mb-1">
+                          Current Admin Credentials
+                        </h4>
+                        <p className="text-sm text-ui-gray-700 mb-2">
+                          These credentials are required for admin access. Keep
+                          them secure and change them regularly.
+                        </p>
+                        <div className="bg-ui-gray-50 rounded p-3 font-mono text-sm">
+                          <div className="mb-1">
+                            <span className="text-ui-gray-600">Email:</span>{" "}
+                            <span className="font-medium">
+                              admin@shopfusion.com
+                            </span>
+                          </div>
+                          <div>
+                            <span className="text-ui-gray-600">Password:</span>{" "}
+                            <span className="font-medium">shop254</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                      <h4 className="font-medium mb-4">Change Admin Email</h4>
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-medium text-ui-gray-700 mb-2">
+                            New Admin Email
+                          </label>
+                          <input
+                            type="email"
+                            defaultValue="admin@shopfusion.com"
+                            className="input-field"
+                            placeholder="admin@shopfusion.com"
+                          />
+                        </div>
+                        <Button className="w-full">Update Email</Button>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-medium mb-4">
+                        Change Admin Password
+                      </h4>
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-medium text-ui-gray-700 mb-2">
+                            Current Password
+                          </label>
+                          <input
+                            type="password"
+                            className="input-field"
+                            placeholder="Current password"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-ui-gray-700 mb-2">
+                            New Password
+                          </label>
+                          <input
+                            type="password"
+                            className="input-field"
+                            placeholder="New password"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-ui-gray-700 mb-2">
+                            Confirm New Password
+                          </label>
+                          <input
+                            type="password"
+                            className="input-field"
+                            placeholder="Confirm new password"
+                          />
+                        </div>
+                        <Button className="w-full">Update Password</Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Security Settings */}
+                <div className="bg-white rounded-lg shadow-sm border border-ui-gray-200 p-6">
+                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5" />
+                    Security Settings
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <label className="text-sm font-medium text-ui-gray-700">
+                            Two-Factor Authentication
+                          </label>
+                          <p className="text-sm text-ui-gray-500">
+                            Add extra security to admin access
+                          </p>
+                        </div>
+                        <input type="checkbox" className="filter-checkbox" />
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <label className="text-sm font-medium text-ui-gray-700">
+                            Login Notifications
+                          </label>
+                          <p className="text-sm text-ui-gray-500">
+                            Get notified of admin logins
+                          </p>
+                        </div>
+                        <input
+                          type="checkbox"
+                          defaultChecked
+                          className="filter-checkbox"
+                        />
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <label className="text-sm font-medium text-ui-gray-700">
+                            Session Timeout
+                          </label>
+                          <p className="text-sm text-ui-gray-500">
+                            Auto-logout after inactivity
+                          </p>
+                        </div>
+                        <select className="px-3 py-1 border border-ui-gray-300 rounded text-sm">
+                          <option value="30">30 minutes</option>
+                          <option value="60">1 hour</option>
+                          <option value="120">2 hours</option>
+                          <option value="480">8 hours</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div className="space-y-4">
+                      <div>
+                        <label className="block text-sm font-medium text-ui-gray-700 mb-2">
+                          Allowed IP Addresses
+                        </label>
+                        <textarea
+                          className="input-field resize-none"
+                          rows={3}
+                          placeholder="Enter IP addresses (one per line)&#10;Leave empty to allow all IPs"
+                        />
+                      </div>
+                      <Button variant="outline" className="w-full">
+                        Update IP Restrictions
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Access Logs */}
+                <div className="bg-white rounded-lg shadow-sm border border-ui-gray-200 p-6">
+                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <Eye className="w-5 h-5" />
+                    Recent Admin Access
+                  </h3>
+                  <div className="space-y-3">
+                    {[
+                      {
+                        time: "2 minutes ago",
+                        action: "Admin login",
+                        ip: "192.168.1.100",
+                        location: "San Francisco, CA",
+                        success: true,
+                      },
+                      {
+                        time: "1 hour ago",
+                        action: "Password change attempt",
+                        ip: "192.168.1.100",
+                        location: "San Francisco, CA",
+                        success: true,
+                      },
+                      {
+                        time: "3 hours ago",
+                        action: "Failed login attempt",
+                        ip: "203.45.67.89",
+                        location: "Unknown",
+                        success: false,
+                      },
+                      {
+                        time: "1 day ago",
+                        action: "Admin logout",
+                        ip: "192.168.1.100",
+                        location: "San Francisco, CA",
+                        success: true,
+                      },
+                    ].map((log, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center justify-between py-3 px-4 bg-ui-gray-50 rounded-lg"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div
+                            className={`w-2 h-2 rounded-full ${
+                              log.success ? "bg-green-500" : "bg-red-500"
+                            }`}
+                          />
+                          <div>
+                            <p className="text-sm font-medium">{log.action}</p>
+                            <p className="text-xs text-ui-gray-500">
+                              {log.ip} • {log.location}
+                            </p>
+                          </div>
+                        </div>
+                        <span className="text-xs text-ui-gray-500">
+                          {log.time}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-4 text-center">
+                    <Button variant="outline" size="sm">
+                      View All Logs
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Placeholder for other tabs */}
             {["orders", "customers", "analytics"].includes(activeTab) && (
               <div className="bg-white rounded-lg shadow-sm border border-ui-gray-200 p-8 text-center">
