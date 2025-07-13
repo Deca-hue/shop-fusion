@@ -810,15 +810,26 @@ export default function Admin() {
                       <h4 className="font-medium mb-4">
                         Change Admin Password
                       </h4>
-                      <div className="space-y-4">
+                      <form
+                        onSubmit={handlePasswordChange}
+                        className="space-y-4"
+                      >
                         <div>
                           <label className="block text-sm font-medium text-ui-gray-700 mb-2">
                             Current Password
                           </label>
                           <input
                             type="password"
+                            value={passwordForm.currentPassword}
+                            onChange={(e) =>
+                              setPasswordForm((prev) => ({
+                                ...prev,
+                                currentPassword: e.target.value,
+                              }))
+                            }
                             className="input-field"
                             placeholder="Current password"
+                            required
                           />
                         </div>
                         <div>
@@ -827,8 +838,17 @@ export default function Admin() {
                           </label>
                           <input
                             type="password"
+                            value={passwordForm.newPassword}
+                            onChange={(e) =>
+                              setPasswordForm((prev) => ({
+                                ...prev,
+                                newPassword: e.target.value,
+                              }))
+                            }
                             className="input-field"
-                            placeholder="New password"
+                            placeholder="New password (min 8 characters)"
+                            required
+                            minLength={8}
                           />
                         </div>
                         <div>
@@ -837,12 +857,26 @@ export default function Admin() {
                           </label>
                           <input
                             type="password"
+                            value={passwordForm.confirmPassword}
+                            onChange={(e) =>
+                              setPasswordForm((prev) => ({
+                                ...prev,
+                                confirmPassword: e.target.value,
+                              }))
+                            }
                             className="input-field"
                             placeholder="Confirm new password"
+                            required
                           />
                         </div>
-                        <Button className="w-full">Update Password</Button>
-                      </div>
+                        <Button
+                          type="submit"
+                          className="w-full"
+                          disabled={isUpdating}
+                        >
+                          {isUpdating ? "Updating..." : "Update Password"}
+                        </Button>
+                      </form>
                     </div>
                   </div>
                 </div>
