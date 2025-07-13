@@ -170,6 +170,7 @@ export default function Admin() {
                   { id: "orders", label: "Orders", icon: ShoppingCart },
                   { id: "customers", label: "Customers", icon: Users },
                   { id: "analytics", label: "Analytics", icon: TrendingUp },
+                  { id: "security", label: "Security", icon: Settings },
                 ].map((tab) => (
                   <li key={tab.id}>
                     <button
