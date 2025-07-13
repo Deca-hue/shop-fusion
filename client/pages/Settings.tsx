@@ -153,10 +153,27 @@ export default function SettingsPage() {
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex gap-8">
-          {/* Sidebar */}
-          <div className="w-64 flex-shrink-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
+        <div className="flex flex-col lg:flex-row gap-6 md:gap-8">
+          {/* Mobile Section Selector */}
+          <div className="lg:hidden">
+            <div className="bg-white rounded-lg shadow-sm border border-ui-gray-200 p-4 mb-6">
+              <select
+                value={activeSection}
+                onChange={(e) => setActiveSection(e.target.value)}
+                className="w-full px-3 py-2 border border-ui-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-primary"
+              >
+                {sections.map((section) => (
+                  <option key={section.id} value={section.id}>
+                    {section.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Desktop Sidebar */}
+          <div className="hidden lg:block w-64 flex-shrink-0">
             <nav className="bg-white rounded-lg shadow-sm border border-ui-gray-200 p-4">
               <ul className="space-y-2">
                 {sections.map((section) => (
@@ -203,7 +220,7 @@ export default function SettingsPage() {
           </div>
 
           {/* Main Content */}
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
             <div className="bg-white rounded-lg shadow-sm border border-ui-gray-200 p-6">
               {/* Profile Settings */}
               {activeSection === "profile" && (
