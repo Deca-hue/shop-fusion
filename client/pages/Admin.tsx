@@ -48,7 +48,8 @@ export default function Admin() {
     confirmPassword: "",
   });
   const [emailForm, setEmailForm] = useState({
-    newEmail: "admin@shopfusion.com",
+    currentEmail: "",
+    newEmail: "",
   });
   const [isUpdating, setIsUpdating] = useState(false);
 
