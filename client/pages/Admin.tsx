@@ -269,6 +269,129 @@ export default function Admin() {
                     </div>
                   </div>
 
+                  {/* Additional Analytics */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div className="bg-gradient-gold text-white p-6 rounded-lg shadow-sm">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm text-white/80">
+                            Featured Products
+                          </p>
+                          <p className="text-2xl font-bold">
+                            {stats.featuredProducts}
+                          </p>
+                          <p className="text-xs text-white/70 mt-1">
+                            {(
+                              (stats.featuredProducts / stats.totalProducts) *
+                              100
+                            ).toFixed(1)}
+                            % of catalog
+                          </p>
+                        </div>
+                        <Star className="w-8 h-8 text-white" />
+                      </div>
+                    </div>
+
+                    <div className="bg-gradient-navy text-white p-6 rounded-lg shadow-sm">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm text-white/80">New Products</p>
+                          <p className="text-2xl font-bold">
+                            {stats.newProducts}
+                          </p>
+                          <p className="text-xs text-white/70 mt-1">
+                            Added this month
+                          </p>
+                        </div>
+                        <Zap className="w-8 h-8 text-white" />
+                      </div>
+                    </div>
+
+                    <div className="bg-gradient-purple text-white p-6 rounded-lg shadow-sm">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm text-white/80">On Sale</p>
+                          <p className="text-2xl font-bold">
+                            {stats.onSaleProducts}
+                          </p>
+                          <p className="text-xs text-white/70 mt-1">
+                            Active promotions
+                          </p>
+                        </div>
+                        <TrendingDown className="w-8 h-8 text-white" />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Category Performance */}
+                  <div className="bg-white rounded-lg shadow-sm border border-ui-gray-200 p-6 mb-8">
+                    <h3 className="text-lg font-semibold mb-4">
+                      Category Performance
+                    </h3>
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                      {Object.entries(categoryStats).map(
+                        ([category, count]) => (
+                          <div
+                            key={category}
+                            className="text-center p-3 bg-ui-gray-50 rounded-lg hover:bg-ui-gray-100 transition-colors"
+                          >
+                            <div className="text-2xl font-bold text-brand-primary">
+                              {count}
+                            </div>
+                            <div className="text-sm text-ui-gray-600 capitalize">
+                              {category}
+                            </div>
+                            <div className="text-xs text-ui-gray-500">
+                              {((count / stats.totalProducts) * 100).toFixed(1)}
+                              %
+                            </div>
+                          </div>
+                        ),
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Revenue Trend */}
+                  <div className="bg-white rounded-lg shadow-sm border border-ui-gray-200 p-6 mb-8">
+                    <h3 className="text-lg font-semibold mb-4">
+                      Weekly Revenue Trend
+                    </h3>
+                    <div className="h-64 flex items-end justify-between gap-2">
+                      {revenueData.map((day, index) => {
+                        const maxRevenue = Math.max(
+                          ...revenueData.map((d) => d.revenue),
+                        );
+                        const height = (day.revenue / maxRevenue) * 100;
+                        return (
+                          <div
+                            key={index}
+                            className="flex-1 flex flex-col items-center"
+                          >
+                            <div
+                              className="w-full bg-gradient-to-t from-brand-primary to-brand-accent rounded-t-md mb-2 min-h-[20px] relative group"
+                              style={{ height: `${height}%` }}
+                            >
+                              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                ${day.revenue.toLocaleString()}
+                              </div>
+                            </div>
+                            <div className="text-xs text-ui-gray-600">
+                              {day.date}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <div className="mt-4 text-center">
+                      <div className="text-sm text-ui-gray-600">
+                        Weekly Total:{" "}
+                        <span className="font-semibold text-green-600">
+                          ${stats.weeklyRevenue.toLocaleString()}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
                   {/* Recent Activity */}
                   <div className="bg-white rounded-lg shadow-sm border border-ui-gray-200 p-6">
                     <h3 className="text-lg font-semibold mb-4">
