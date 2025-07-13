@@ -677,7 +677,7 @@ export default function Admin() {
                           </div>
                           <div>
                             <span className="text-ui-gray-600">Password:</span>{" "}
-                            <span className="font-medium">shop254</span>
+                            <span className="font-medium">@Shop254</span>
                           </div>
                         </div>
                       </div>
