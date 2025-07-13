@@ -94,9 +94,12 @@ export default function Index() {
               >
                 Shop Now
               </Link>
-              <button className="btn-secondary bg-transparent text-white border-white hover:bg-white hover:text-brand-primary">
+              <Link
+                to="/about"
+                className="btn-secondary bg-transparent text-white border-white hover:bg-white hover:text-brand-primary text-center"
+              >
                 Learn More
-              </button>
+              </Link>
             </div>
           </div>
         </div>
