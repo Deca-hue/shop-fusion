@@ -167,7 +167,8 @@ export default function Admin() {
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    // Update credentials
+    // Update credentials in context and local state
+    updateAdminCredentials(adminCredentials.email, passwordForm.newPassword);
     setAdminCredentials((prev) => ({
       ...prev,
       password: passwordForm.newPassword,
