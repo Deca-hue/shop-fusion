@@ -403,82 +403,156 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-xl font-serif font-bold mb-4">ShopFusion</h3>
-              <p className="text-ui-gray-300">
+              <h3 className="text-xl font-serif font-bold mb-4 text-luxury-gold">
+                ShopFusion
+              </h3>
+              <p className="text-ui-gray-300 mb-4">
                 Your trusted online marketplace for quality products at
-                affordable prices.
+                affordable prices since 2009.
               </p>
+              <div className="flex items-center gap-2 text-ui-gray-300">
+                <Shield className="w-4 h-4" />
+                <span className="text-sm">Secure & Trusted</span>
+              </div>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Quick Links</h4>
+              <h4 className="font-semibold mb-4 text-white">Quick Links</h4>
               <ul className="space-y-2 text-ui-gray-300">
                 <li>
-                  <a href="#" className="hover:text-white">
+                  <Link
+                    to="/about"
+                    className="hover:text-luxury-gold transition-colors"
+                  >
                     About Us
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white">
-                    Contact
-                  </a>
+                  <Link
+                    to="/products"
+                    className="hover:text-luxury-gold transition-colors"
+                  >
+                    All Products
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white">
-                    FAQ
-                  </a>
+                  <Link
+                    to="/products?category=electronics"
+                    className="hover:text-luxury-gold transition-colors"
+                  >
+                    Electronics
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white">
-                    Support
-                  </a>
+                  <Link
+                    to="/products?category=fashion"
+                    className="hover:text-luxury-gold transition-colors"
+                  >
+                    Fashion
+                  </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Customer Service</h4>
+              <h4 className="font-semibold mb-4 text-white">
+                Customer Service
+              </h4>
               <ul className="space-y-2 text-ui-gray-300">
                 <li>
-                  <a href="#" className="hover:text-white">
+                  <a
+                    href="mailto:support@shopfusion.com"
+                    className="hover:text-luxury-gold transition-colors"
+                  >
+                    Contact Support
+                  </a>
+                </li>
+                <li>
+                  <Link
+                    to="/checkout"
+                    className="hover:text-luxury-gold transition-colors"
+                  >
                     Shipping Info
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="hover:text-luxury-gold transition-colors"
+                  >
+                    Returns & Refunds
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white">
-                    Returns
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Size Guide
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Track Order
+                  <a
+                    href="#"
+                    className="hover:text-luxury-gold transition-colors"
+                  >
+                    Track Your Order
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Follow Us</h4>
-              <div className="flex space-x-4">
-                <a href="#" className="text-ui-gray-300 hover:text-white">
+              <h4 className="font-semibold mb-4 text-white">Connect With Us</h4>
+              <div className="flex space-x-4 mb-4">
+                <a
+                  href="https://facebook.com/shopfusion"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-ui-gray-300 hover:text-luxury-gold transition-colors"
+                >
                   <span className="sr-only">Facebook</span>
                   📘
                 </a>
-                <a href="#" className="text-ui-gray-300 hover:text-white">
+                <a
+                  href="https://twitter.com/shopfusion"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-ui-gray-300 hover:text-luxury-gold transition-colors"
+                >
                   <span className="sr-only">Twitter</span>
                   🐦
                 </a>
-                <a href="#" className="text-ui-gray-300 hover:text-white">
+                <a
+                  href="https://instagram.com/shopfusion"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-ui-gray-300 hover:text-luxury-gold transition-colors"
+                >
                   <span className="sr-only">Instagram</span>
                   📷
                 </a>
               </div>
+              <div className="text-ui-gray-300 text-sm">
+                <p>📞 1-800-SHOPFUSION</p>
+                <p>📧 support@shopfusion.com</p>
+                <p>🕒 24/7 Customer Support</p>
+              </div>
             </div>
           </div>
           <div className="border-t border-ui-gray-700 mt-8 pt-8 text-center text-ui-gray-300">
-            <p>&copy; 2024 ShopFusion. All rights reserved.</p>
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <p>&copy; 2024 ShopFusion. All rights reserved.</p>
+              <div className="flex gap-6 text-sm">
+                <a
+                  href="#"
+                  className="hover:text-luxury-gold transition-colors"
+                >
+                  Privacy Policy
+                </a>
+                <a
+                  href="#"
+                  className="hover:text-luxury-gold transition-colors"
+                >
+                  Terms of Service
+                </a>
+                <a
+                  href="#"
+                  className="hover:text-luxury-gold transition-colors"
+                >
+                  Cookie Policy
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
