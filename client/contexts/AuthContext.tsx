@@ -65,6 +65,12 @@ const initialState: AuthState = {
   isLoading: false,
 };
 
+// Dynamic admin credentials storage
+let adminCredentials = {
+  email: "admin@shopfusion.com",
+  password: "@Shop254",
+};
+
 // Mock users for demo
 const mockUsers: User[] = [
   {
@@ -88,6 +94,18 @@ const mockUsers: User[] = [
     emailVerified: true,
   },
 ];
+
+// Function to update admin credentials
+export function updateAdminCredentials(newEmail: string, newPassword: string) {
+  adminCredentials.email = newEmail;
+  adminCredentials.password = newPassword;
+
+  // Update the user in mockUsers array
+  const adminUser = mockUsers.find((u) => u.role === "admin");
+  if (adminUser) {
+    adminUser.email = newEmail;
+  }
+}
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(authReducer, initialState);
