@@ -807,16 +807,37 @@ export default function Admin() {
                       <form onSubmit={handleEmailChange} className="space-y-4">
                         <div>
                           <label className="block text-sm font-medium text-ui-gray-700 mb-2">
+                            Current Admin Email
+                          </label>
+                          <input
+                            type="email"
+                            value={emailForm.currentEmail}
+                            onChange={(e) =>
+                              setEmailForm((prev) => ({
+                                ...prev,
+                                currentEmail: e.target.value,
+                              }))
+                            }
+                            className="input-field"
+                            placeholder="Enter current email"
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-ui-gray-700 mb-2">
                             New Admin Email
                           </label>
                           <input
                             type="email"
                             value={emailForm.newEmail}
                             onChange={(e) =>
-                              setEmailForm({ newEmail: e.target.value })
+                              setEmailForm((prev) => ({
+                                ...prev,
+                                newEmail: e.target.value,
+                              }))
                             }
                             className="input-field"
-                            placeholder="admin@shopfusion.com"
+                            placeholder="Enter new email"
                             required
                           />
                         </div>
