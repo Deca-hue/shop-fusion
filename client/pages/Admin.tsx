@@ -763,12 +763,14 @@ export default function Admin() {
                           <div className="mb-1">
                             <span className="text-ui-gray-600">Email:</span>{" "}
                             <span className="font-medium">
-                              admin@shopfusion.com
+                              {adminCredentials.email}
                             </span>
                           </div>
                           <div>
                             <span className="text-ui-gray-600">Password:</span>{" "}
-                            <span className="font-medium">@Shop254</span>
+                            <span className="font-medium">
+                              {adminCredentials.password}
+                            </span>
                           </div>
                         </div>
                       </div>
