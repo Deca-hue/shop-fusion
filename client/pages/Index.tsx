@@ -1,8 +1,21 @@
-import { getFeaturedProducts } from "@/lib/mock-data";
+import { getFeaturedProducts, mockCategories } from "@/lib/mock-data";
 import { ProductCard } from "@/components/products/ProductCard";
 import { CartButton } from "@/components/cart/CartButton";
 import { AuthButton } from "@/components/auth/AuthButton";
+import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import {
+  Shield,
+  Truck,
+  Heart,
+  Award,
+  Star,
+  Zap,
+  Users,
+  TrendingUp,
+  ShoppingBag,
+  Clock,
+} from "lucide-react";
 
 export default function Index() {
   const featuredProducts = getFeaturedProducts();
