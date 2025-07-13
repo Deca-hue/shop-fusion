@@ -214,15 +214,167 @@ export default function Index() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-12">
-            <h2 className="text-3xl font-serif font-bold">Featured Products</h2>
-            <Link to="/products" className="text-brand-primary hover:underline">
-              View All
+            <div>
+              <h2 className="text-3xl font-serif font-bold">
+                Featured Products
+              </h2>
+              <p className="text-ui-gray-600 mt-2">
+                Hand-picked items just for you
+              </p>
+            </div>
+            <Link
+              to="/products"
+              className="text-brand-primary hover:underline font-medium"
+            >
+              View All Products →
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredProducts.slice(0, 4).map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Trending Now */}
+      <section className="py-16 bg-ui-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-12">
+            <div>
+              <h2 className="text-3xl font-serif font-bold flex items-center gap-3">
+                <TrendingUp className="w-8 h-8 text-brand-primary" />
+                Trending Now
+              </h2>
+              <p className="text-ui-gray-600 mt-2">
+                Most popular items this week
+              </p>
+            </div>
+            <Link
+              to="/products?sort=popularity"
+              className="text-brand-primary hover:underline font-medium"
+            >
+              See All Trending →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredProducts.slice(4, 8).map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Customer Testimonials */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-serif font-bold mb-4">
+              What Our Customers Say
+            </h2>
+            <p className="text-ui-gray-600 max-w-2xl mx-auto">
+              Don't just take our word for it - hear from our satisfied
+              customers
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Sarah Mitchell",
+                role: "Verified Buyer",
+                image:
+                  "https://images.unsplash.com/photo-1494790108755-2616b612b812?w=100&h=100&fit=crop&crop=face",
+                rating: 5,
+                text: "Amazing quality products and lightning-fast delivery! ShopFusion has become my go-to for all online shopping.",
+              },
+              {
+                name: "David Chen",
+                role: "Premium Member",
+                image:
+                  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+                rating: 5,
+                text: "The customer service is exceptional. They went above and beyond to help me find exactly what I needed.",
+              },
+              {
+                name: "Emma Rodriguez",
+                role: "Frequent Shopper",
+                image:
+                  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+                rating: 5,
+                text: "Love the variety and competitive prices. The user experience is so smooth and intuitive.",
+              },
+            ].map((testimonial, index) => (
+              <div
+                key={index}
+                className="bg-ui-gray-50 rounded-2xl p-6 hover:shadow-lg transition-shadow"
+              >
+                <div className="flex items-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-5 h-5 text-yellow-400 fill-current"
+                    />
+                  ))}
+                </div>
+                <p className="text-ui-gray-700 mb-6 italic">
+                  "{testimonial.text}"
+                </p>
+                <div className="flex items-center">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="w-12 h-12 rounded-full mr-4"
+                  />
+                  <div>
+                    <div className="font-semibold">{testimonial.name}</div>
+                    <div className="text-sm text-ui-gray-500">
+                      {testimonial.role}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Special Offers */}
+      <section className="py-16 bg-gradient-to-r from-luxury-purple to-luxury-gold text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-3xl mx-auto">
+            <Zap className="w-16 h-16 mx-auto mb-6 text-yellow-300" />
+            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
+              Limited Time Offer!
+            </h2>
+            <p className="text-xl text-white/90 mb-6">
+              Get 25% off your first order when you sign up for our newsletter.
+              Plus, enjoy free shipping on all orders over $50!
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <div className="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/30">
+                <div className="text-2xl font-bold">25% OFF</div>
+                <div className="text-sm">First Order</div>
+              </div>
+              <div className="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/30">
+                <div className="text-2xl font-bold">FREE</div>
+                <div className="text-sm">Shipping $50+</div>
+              </div>
+              <div className="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/30 flex items-center gap-2">
+                <Clock className="w-5 h-5" />
+                <div>
+                  <div className="text-lg font-bold">48H</div>
+                  <div className="text-xs">Delivery</div>
+                </div>
+              </div>
+            </div>
+            <div className="mt-8">
+              <Link
+                to="/products"
+                className="btn-primary bg-white text-luxury-purple hover:bg-ui-gray-100 text-lg px-8 py-4"
+              >
+                Shop Now & Save
+              </Link>
+            </div>
           </div>
         </div>
       </section>
