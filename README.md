@@ -45,7 +45,7 @@ This ecommerce site template is perfect for:
 
 ## 📸 Preview
 
-> 💡 Live Demo: [Click here to try it out](https://your-live-demo-link.com)
+> 💡 Live Demo: [Click here to try it out](https://shop-fusio.netlify.app/)
 
 ![screenshot](https://your-image-url.com/screenshot.png)
 
@@ -94,9 +94,9 @@ This ecommerce site template is perfect for:
 
 Like what you see? Want to collaborate or hire?
 
-- Portfolio: [your-portfolio-link](https://yourportfolio.com)
-- LinkedIn: [your-linkedin](https://linkedin.com/in/yourname)
-- Twitter/X: [@yourhandle](https://twitter.com/yourhandle)
+- Portfolio: [your-portfolio-link](https://my-portfolio-two-eta-13.vercel.app/)
+- LinkedIn: [your-linkedin](https://www.linkedin.com/in/elite-design-sv-031412260/)
+- Twitter/X: [@yourhandle](https://x.com/Elitetech25)
 
 ---
 
