@@ -22,6 +22,11 @@ import {
   Settings,
   BarChart3,
   DollarSign,
+  Star,
+  Zap,
+  TrendingDown,
+  AlertTriangle,
+  CheckCircle,
 } from "lucide-react";
 
 export default function Admin() {
