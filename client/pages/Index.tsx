@@ -482,12 +482,12 @@ export default function Index() {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="/orders"
                     className="hover:text-luxury-gold transition-colors"
                   >
                     Track Your Order
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
