@@ -13,6 +13,7 @@ import Products from "./pages/Products";
 import Checkout from "./pages/Checkout";
 import Admin from "./pages/Admin";
 import About from "./pages/About";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
