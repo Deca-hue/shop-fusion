@@ -36,6 +36,21 @@ export default function Admin() {
   const [products, setProducts] = useState<Product[]>(mockProducts);
   const [searchQuery, setSearchQuery] = useState("");
 
+  // Security form states
+  const [adminCredentials, setAdminCredentials] = useState({
+    email: "admin@shopfusion.com",
+    password: "@Shop254",
+  });
+  const [passwordForm, setPasswordForm] = useState({
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
+  const [emailForm, setEmailForm] = useState({
+    newEmail: "admin@shopfusion.com",
+  });
+  const [isUpdating, setIsUpdating] = useState(false);
+
   // Redirect if not admin
   useEffect(() => {
     if (!isAuthenticated || user?.role !== "admin") {
