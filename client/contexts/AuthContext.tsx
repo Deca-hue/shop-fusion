@@ -136,7 +136,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (
       user &&
       ((user.role === "customer" && password === "password") ||
-        (user.role === "admin" && password === "@Shop254"))
+        (user.role === "admin" &&
+          email === adminCredentials.email &&
+          password === adminCredentials.password))
     ) {
       localStorage.setItem("shopfusion_user", JSON.stringify(user));
       dispatch({ type: "LOGIN_SUCCESS", payload: user });
