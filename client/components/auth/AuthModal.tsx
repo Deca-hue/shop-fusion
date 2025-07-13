@@ -285,21 +285,6 @@ export function AuthModal({
               </Button>
             </form>
 
-            {/* Demo Credentials */}
-            {mode === "login" && (
-              <div className="mt-4 p-3 bg-ui-gray-50 rounded-lg">
-                <p className="text-sm font-medium mb-2">Demo Credentials:</p>
-                <div className="text-xs space-y-1">
-                  <p>
-                    <strong>Customer:</strong> demo@shopfusion.com / password
-                  </p>
-                  <p>
-                    <strong>Admin:</strong> admin@shopfusion.com / admin123
-                  </p>
-                </div>
-              </div>
-            )}
-
             {/* Switch Mode */}
             <div className="mt-6 text-center">
               <span className="text-sm text-ui-gray-600">
