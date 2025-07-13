@@ -115,7 +115,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // Mock authentication - in real app, this would be an API call
     const user = mockUsers.find((u) => u.email === email);
 
-    if (user && (password === "password" || password === "admin123")) {
+    if (
+      user &&
+      ((user.role === "customer" && password === "password") ||
+        (user.role === "admin" && password === "shop254"))
+    ) {
       localStorage.setItem("shopfusion_user", JSON.stringify(user));
       dispatch({ type: "LOGIN_SUCCESS", payload: user });
       return true;
