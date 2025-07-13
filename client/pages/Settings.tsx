@@ -863,6 +863,34 @@ export default function SettingsPage() {
             </div>
           </div>
         </div>
+
+        {/* Mobile Action Buttons */}
+        <div className="lg:hidden mt-6 bg-white rounded-lg shadow-sm border border-ui-gray-200 p-4">
+          <div className="space-y-3">
+            <Button onClick={handleSave} className="w-full">
+              <Save className="w-4 h-4 mr-2" />
+              Save Changes
+            </Button>
+            <div className="grid grid-cols-2 gap-3">
+              <Button
+                onClick={handleReset}
+                variant="outline"
+                className="w-full text-sm"
+              >
+                <RotateCcw className="w-4 h-4 mr-1" />
+                Reset
+              </Button>
+              <Button
+                onClick={handleExportData}
+                variant="outline"
+                className="w-full text-sm"
+              >
+                <Download className="w-4 h-4 mr-1" />
+                Export
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
