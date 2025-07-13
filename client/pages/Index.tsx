@@ -105,31 +105,106 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Why Choose Us */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-serif font-bold mb-4">
+              Why Choose ShopFusion?
+            </h2>
+            <p className="text-ui-gray-600 max-w-2xl mx-auto">
+              We're committed to providing the best online shopping experience
+              with unmatched quality, service, and value.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: Shield,
+                title: "Secure Shopping",
+                description: "Bank-level SSL encryption and secure payments",
+              },
+              {
+                icon: Truck,
+                title: "Fast Delivery",
+                description: "Free shipping on orders over $50 worldwide",
+              },
+              {
+                icon: Heart,
+                title: "24/7 Support",
+                description: "Round-the-clock customer service and assistance",
+              },
+              {
+                icon: Award,
+                title: "Quality Guaranteed",
+                description: "Premium products with satisfaction guarantee",
+              },
+            ].map((feature, index) => (
+              <div key={index} className="text-center group">
+                <div className="bg-gradient-gold rounded-2xl p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <feature.icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
+                <p className="text-ui-gray-600 text-sm">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Categories */}
       <section className="py-16 bg-ui-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-serif font-bold text-center mb-12">
-            Shop by Category
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { name: "Electronics", icon: "📱", slug: "electronics" },
-              { name: "Fashion", icon: "👕", slug: "fashion" },
-              { name: "Home & Garden", icon: "🏠", slug: "home" },
-              { name: "Sports", icon: "⚽", slug: "sports" },
-              { name: "Books", icon: "📚", slug: "books" },
-              { name: "Beauty", icon: "💄", slug: "beauty" },
-              { name: "Toys", icon: "🧸", slug: "toys" },
-              { name: "Food", icon: "🍕", slug: "food" },
-            ].map((category, index) => (
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-serif font-bold mb-4">
+              Shop by Category
+            </h2>
+            <p className="text-ui-gray-600">
+              Explore our wide range of premium products across multiple
+              categories
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {mockCategories.map((category, index) => (
               <Link
                 key={index}
                 to={`/products?category=${category.slug}`}
-                className="product-card text-center p-6 cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1 block"
+                className="product-card text-center p-6 cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
               >
-                <div className="text-4xl mb-4">{category.icon}</div>
-                <h3 className="font-semibold text-lg">{category.name}</h3>
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-brand-primary to-brand-accent flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <img
+                    src={category.image}
+                    alt={category.name}
+                    className="w-8 h-8 object-cover rounded-full"
+                  />
+                </div>
+                <h3 className="font-semibold text-lg mb-2">{category.name}</h3>
+                <p className="text-sm text-ui-gray-500">
+                  {category.productCount} items
+                </p>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 bg-gradient-navy text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {[
+              { label: "Happy Customers", value: "100K+", icon: Users },
+              { label: "Products Sold", value: "500K+", icon: ShoppingBag },
+              { label: "5-Star Reviews", value: "50K+", icon: Star },
+              { label: "Years of Excellence", value: "15+", icon: Award },
+            ].map((stat, index) => (
+              <div key={index} className="group">
+                <stat.icon className="w-12 h-12 mx-auto mb-4 text-luxury-gold group-hover:scale-110 transition-transform" />
+                <div className="text-3xl font-bold mb-2">{stat.value}</div>
+                <div className="text-white/80">{stat.label}</div>
+              </div>
             ))}
           </div>
         </div>
