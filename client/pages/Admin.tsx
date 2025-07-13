@@ -137,6 +137,82 @@ export default function Admin() {
     conversionRate: 2.4 + Math.random() * 0.8, // 2.4-3.2%
   };
 
+  // Password change handler
+  const handlePasswordChange = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsUpdating(true);
+
+    // Validate current password
+    if (passwordForm.currentPassword !== adminCredentials.password) {
+      alert("Current password is incorrect");
+      setIsUpdating(false);
+      return;
+    }
+
+    // Validate new passwords match
+    if (passwordForm.newPassword !== passwordForm.confirmPassword) {
+      alert("New passwords don't match");
+      setIsUpdating(false);
+      return;
+    }
+
+    // Validate password length
+    if (passwordForm.newPassword.length < 8) {
+      alert("Password must be at least 8 characters long");
+      setIsUpdating(false);
+      return;
+    }
+
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    // Update credentials
+    setAdminCredentials((prev) => ({
+      ...prev,
+      password: passwordForm.newPassword,
+    }));
+
+    // Clear form
+    setPasswordForm({
+      currentPassword: "",
+      newPassword: "",
+      confirmPassword: "",
+    });
+
+    setIsUpdating(false);
+    alert(
+      "Password updated successfully! Please use the new password for future logins.",
+    );
+  };
+
+  // Email change handler
+  const handleEmailChange = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsUpdating(true);
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailForm.newEmail)) {
+      alert("Please enter a valid email address");
+      setIsUpdating(false);
+      return;
+    }
+
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    // Update credentials
+    setAdminCredentials((prev) => ({
+      ...prev,
+      email: emailForm.newEmail,
+    }));
+
+    setIsUpdating(false);
+    alert(
+      "Email updated successfully! Please use the new email for future logins.",
+    );
+  };
+
   return (
     <div className="min-h-screen bg-ui-gray-50">
       {/* Header */}
