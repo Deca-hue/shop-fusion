@@ -294,7 +294,10 @@ export default function Admin() {
 
         {/* Mobile Sidebar Overlay */}
         {isMobileSidebarOpen && (
-          <div className="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-50" onClick={() => setIsMobileSidebarOpen(false)} />
+          <div
+            className="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-50"
+            onClick={() => setIsMobileSidebarOpen(false)}
+          />
         )}
 
         <div className="flex gap-8">
@@ -1158,42 +1161,64 @@ export default function Admin() {
                   <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-ui-gray-600">Total Orders</p>
-                        <p className="text-2xl font-bold text-foreground">1,247</p>
+                        <p className="text-sm font-medium text-ui-gray-600">
+                          Total Orders
+                        </p>
+                        <p className="text-2xl font-bold text-foreground">
+                          1,247
+                        </p>
                       </div>
                       <ShoppingCart className="w-8 h-8 text-blue-500" />
                     </div>
-                    <p className="text-xs text-green-600 mt-2">+12% from last month</p>
+                    <p className="text-xs text-green-600 mt-2">
+                      +12% from last month
+                    </p>
                   </div>
                   <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-ui-gray-600">Pending</p>
+                        <p className="text-sm font-medium text-ui-gray-600">
+                          Pending
+                        </p>
                         <p className="text-2xl font-bold text-yellow-600">23</p>
                       </div>
                       <AlertTriangle className="w-8 h-8 text-yellow-500" />
                     </div>
-                    <p className="text-xs text-yellow-600 mt-2">Requires attention</p>
+                    <p className="text-xs text-yellow-600 mt-2">
+                      Requires attention
+                    </p>
                   </div>
                   <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-ui-gray-600">Completed</p>
-                        <p className="text-2xl font-bold text-green-600">1,189</p>
+                        <p className="text-sm font-medium text-ui-gray-600">
+                          Completed
+                        </p>
+                        <p className="text-2xl font-bold text-green-600">
+                          1,189
+                        </p>
                       </div>
                       <CheckCircle className="w-8 h-8 text-green-500" />
                     </div>
-                    <p className="text-xs text-green-600 mt-2">95.3% success rate</p>
+                    <p className="text-xs text-green-600 mt-2">
+                      95.3% success rate
+                    </p>
                   </div>
                   <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-ui-gray-600">Revenue</p>
-                        <p className="text-2xl font-bold text-foreground">$52,840</p>
+                        <p className="text-sm font-medium text-ui-gray-600">
+                          Revenue
+                        </p>
+                        <p className="text-2xl font-bold text-foreground">
+                          $52,840
+                        </p>
                       </div>
                       <DollarSign className="w-8 h-8 text-green-500" />
                     </div>
-                    <p className="text-xs text-green-600 mt-2">+18% from last month</p>
+                    <p className="text-xs text-green-600 mt-2">
+                      +18% from last month
+                    </p>
                   </div>
                 </div>
 
@@ -1206,40 +1231,108 @@ export default function Admin() {
                     <table className="w-full">
                       <thead className="bg-ui-gray-50 border-b border-ui-gray-200">
                         <tr>
-                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">Order ID</th>
-                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">Customer</th>
-                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">Items</th>
-                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">Total</th>
-                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">Status</th>
-                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">Date</th>
-                          <th className="text-right py-3 px-4 font-medium text-sm text-ui-gray-700">Actions</th>
+                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">
+                            Order ID
+                          </th>
+                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">
+                            Customer
+                          </th>
+                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">
+                            Items
+                          </th>
+                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">
+                            Total
+                          </th>
+                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">
+                            Status
+                          </th>
+                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">
+                            Date
+                          </th>
+                          <th className="text-right py-3 px-4 font-medium text-sm text-ui-gray-700">
+                            Actions
+                          </th>
                         </tr>
                       </thead>
                       <tbody>
                         {[
-                          { id: "#ORD-001", customer: "John Doe", items: 3, total: "$249.99", status: "completed", date: "2024-01-15" },
-                          { id: "#ORD-002", customer: "Jane Smith", items: 1, total: "$89.99", status: "pending", date: "2024-01-15" },
-                          { id: "#ORD-003", customer: "Mike Johnson", items: 2, total: "$159.98", status: "shipped", date: "2024-01-14" },
-                          { id: "#ORD-004", customer: "Sarah Wilson", items: 5, total: "$399.95", status: "processing", date: "2024-01-14" },
-                          { id: "#ORD-005", customer: "Tom Brown", items: 1, total: "$49.99", status: "completed", date: "2024-01-13" },
+                          {
+                            id: "#ORD-001",
+                            customer: "John Doe",
+                            items: 3,
+                            total: "$249.99",
+                            status: "completed",
+                            date: "2024-01-15",
+                          },
+                          {
+                            id: "#ORD-002",
+                            customer: "Jane Smith",
+                            items: 1,
+                            total: "$89.99",
+                            status: "pending",
+                            date: "2024-01-15",
+                          },
+                          {
+                            id: "#ORD-003",
+                            customer: "Mike Johnson",
+                            items: 2,
+                            total: "$159.98",
+                            status: "shipped",
+                            date: "2024-01-14",
+                          },
+                          {
+                            id: "#ORD-004",
+                            customer: "Sarah Wilson",
+                            items: 5,
+                            total: "$399.95",
+                            status: "processing",
+                            date: "2024-01-14",
+                          },
+                          {
+                            id: "#ORD-005",
+                            customer: "Tom Brown",
+                            items: 1,
+                            total: "$49.99",
+                            status: "completed",
+                            date: "2024-01-13",
+                          },
                         ].map((order) => (
-                          <tr key={order.id} className="border-b border-ui-gray-100 hover:bg-ui-gray-50">
-                            <td className="py-3 px-4 font-medium text-sm">{order.id}</td>
-                            <td className="py-3 px-4 text-sm">{order.customer}</td>
-                            <td className="py-3 px-4 text-sm">{order.items} items</td>
-                            <td className="py-3 px-4 text-sm font-medium">{order.total}</td>
+                          <tr
+                            key={order.id}
+                            className="border-b border-ui-gray-100 hover:bg-ui-gray-50"
+                          >
+                            <td className="py-3 px-4 font-medium text-sm">
+                              {order.id}
+                            </td>
+                            <td className="py-3 px-4 text-sm">
+                              {order.customer}
+                            </td>
+                            <td className="py-3 px-4 text-sm">
+                              {order.items} items
+                            </td>
+                            <td className="py-3 px-4 text-sm font-medium">
+                              {order.total}
+                            </td>
                             <td className="py-3 px-4">
-                              <span className={cn(
-                                "inline-flex px-2 py-1 text-xs font-medium rounded-full",
-                                order.status === "completed" && "bg-green-100 text-green-800",
-                                order.status === "pending" && "bg-yellow-100 text-yellow-800",
-                                order.status === "shipped" && "bg-blue-100 text-blue-800",
-                                order.status === "processing" && "bg-purple-100 text-purple-800"
-                              )}>
+                              <span
+                                className={cn(
+                                  "inline-flex px-2 py-1 text-xs font-medium rounded-full",
+                                  order.status === "completed" &&
+                                    "bg-green-100 text-green-800",
+                                  order.status === "pending" &&
+                                    "bg-yellow-100 text-yellow-800",
+                                  order.status === "shipped" &&
+                                    "bg-blue-100 text-blue-800",
+                                  order.status === "processing" &&
+                                    "bg-purple-100 text-purple-800",
+                                )}
+                              >
                                 {order.status}
                               </span>
                             </td>
-                            <td className="py-3 px-4 text-sm text-ui-gray-600">{order.date}</td>
+                            <td className="py-3 px-4 text-sm text-ui-gray-600">
+                              {order.date}
+                            </td>
                             <td className="py-3 px-4 text-right">
                               <div className="flex justify-end gap-2">
                                 <Button variant="ghost" size="sm">
@@ -1281,17 +1374,25 @@ export default function Admin() {
                   <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-ui-gray-600">Total Customers</p>
-                        <p className="text-2xl font-bold text-foreground">2,847</p>
+                        <p className="text-sm font-medium text-ui-gray-600">
+                          Total Customers
+                        </p>
+                        <p className="text-2xl font-bold text-foreground">
+                          2,847
+                        </p>
                       </div>
                       <Users className="w-8 h-8 text-blue-500" />
                     </div>
-                    <p className="text-xs text-green-600 mt-2">+23% from last month</p>
+                    <p className="text-xs text-green-600 mt-2">
+                      +23% from last month
+                    </p>
                   </div>
                   <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-ui-gray-600">Active Today</p>
+                        <p className="text-sm font-medium text-ui-gray-600">
+                          Active Today
+                        </p>
                         <p className="text-2xl font-bold text-green-600">127</p>
                       </div>
                       <Zap className="w-8 h-8 text-green-500" />
@@ -1301,76 +1402,158 @@ export default function Admin() {
                   <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-ui-gray-600">Avg. Order Value</p>
-                        <p className="text-2xl font-bold text-foreground">$142.50</p>
+                        <p className="text-sm font-medium text-ui-gray-600">
+                          Avg. Order Value
+                        </p>
+                        <p className="text-2xl font-bold text-foreground">
+                          $142.50
+                        </p>
                       </div>
                       <DollarSign className="w-8 h-8 text-purple-500" />
                     </div>
-                    <p className="text-xs text-purple-600 mt-2">+8% from last month</p>
+                    <p className="text-xs text-purple-600 mt-2">
+                      +8% from last month
+                    </p>
                   </div>
                   <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-ui-gray-600">Retention Rate</p>
+                        <p className="text-sm font-medium text-ui-gray-600">
+                          Retention Rate
+                        </p>
                         <p className="text-2xl font-bold text-green-600">78%</p>
                       </div>
                       <Star className="w-8 h-8 text-yellow-500" />
                     </div>
-                    <p className="text-xs text-green-600 mt-2">+5% from last month</p>
+                    <p className="text-xs text-green-600 mt-2">
+                      +5% from last month
+                    </p>
                   </div>
                 </div>
 
                 {/* Customers List */}
                 <div className="bg-white rounded-lg shadow-sm border border-ui-gray-200">
                   <div className="p-6 border-b border-ui-gray-200">
-                    <h3 className="text-lg font-semibold">Customer Directory</h3>
+                    <h3 className="text-lg font-semibold">
+                      Customer Directory
+                    </h3>
                   </div>
                   <div className="overflow-x-auto">
                     <table className="w-full">
                       <thead className="bg-ui-gray-50 border-b border-ui-gray-200">
                         <tr>
-                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">Customer</th>
-                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">Email</th>
-                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">Orders</th>
-                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">Total Spent</th>
-                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">Status</th>
-                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">Joined</th>
-                          <th className="text-right py-3 px-4 font-medium text-sm text-ui-gray-700">Actions</th>
+                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">
+                            Customer
+                          </th>
+                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">
+                            Email
+                          </th>
+                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">
+                            Orders
+                          </th>
+                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">
+                            Total Spent
+                          </th>
+                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">
+                            Status
+                          </th>
+                          <th className="text-left py-3 px-4 font-medium text-sm text-ui-gray-700">
+                            Joined
+                          </th>
+                          <th className="text-right py-3 px-4 font-medium text-sm text-ui-gray-700">
+                            Actions
+                          </th>
                         </tr>
                       </thead>
                       <tbody>
                         {[
-                          { name: "John Doe", email: "john.doe@example.com", orders: 12, spent: "$1,249.99", status: "active", joined: "2023-08-15" },
-                          { name: "Jane Smith", email: "jane.smith@gmail.com", orders: 8, spent: "$879.50", status: "active", joined: "2023-09-22" },
-                          { name: "Mike Johnson", email: "mike.j@company.com", orders: 15, spent: "$2,150.00", status: "vip", joined: "2023-07-10" },
-                          { name: "Sarah Wilson", email: "sarah.wilson@outlook.com", orders: 3, spent: "$299.99", status: "new", joined: "2024-01-05" },
-                          { name: "Tom Brown", email: "tom.brown@yahoo.com", orders: 25, spent: "$3,899.75", status: "vip", joined: "2023-05-20" },
+                          {
+                            name: "John Doe",
+                            email: "john.doe@example.com",
+                            orders: 12,
+                            spent: "$1,249.99",
+                            status: "active",
+                            joined: "2023-08-15",
+                          },
+                          {
+                            name: "Jane Smith",
+                            email: "jane.smith@gmail.com",
+                            orders: 8,
+                            spent: "$879.50",
+                            status: "active",
+                            joined: "2023-09-22",
+                          },
+                          {
+                            name: "Mike Johnson",
+                            email: "mike.j@company.com",
+                            orders: 15,
+                            spent: "$2,150.00",
+                            status: "vip",
+                            joined: "2023-07-10",
+                          },
+                          {
+                            name: "Sarah Wilson",
+                            email: "sarah.wilson@outlook.com",
+                            orders: 3,
+                            spent: "$299.99",
+                            status: "new",
+                            joined: "2024-01-05",
+                          },
+                          {
+                            name: "Tom Brown",
+                            email: "tom.brown@yahoo.com",
+                            orders: 25,
+                            spent: "$3,899.75",
+                            status: "vip",
+                            joined: "2023-05-20",
+                          },
                         ].map((customer, index) => (
-                          <tr key={index} className="border-b border-ui-gray-100 hover:bg-ui-gray-50">
+                          <tr
+                            key={index}
+                            className="border-b border-ui-gray-100 hover:bg-ui-gray-50"
+                          >
                             <td className="py-3 px-4">
                               <div className="flex items-center gap-3">
                                 <div className="w-8 h-8 bg-brand-primary/10 rounded-full flex items-center justify-center">
                                   <span className="text-sm font-medium text-brand-primary">
-                                    {customer.name.split(' ').map(n => n[0]).join('')}
+                                    {customer.name
+                                      .split(" ")
+                                      .map((n) => n[0])
+                                      .join("")}
                                   </span>
                                 </div>
-                                <span className="font-medium text-sm">{customer.name}</span>
+                                <span className="font-medium text-sm">
+                                  {customer.name}
+                                </span>
                               </div>
                             </td>
-                            <td className="py-3 px-4 text-sm text-ui-gray-600">{customer.email}</td>
-                            <td className="py-3 px-4 text-sm">{customer.orders}</td>
-                            <td className="py-3 px-4 text-sm font-medium">{customer.spent}</td>
+                            <td className="py-3 px-4 text-sm text-ui-gray-600">
+                              {customer.email}
+                            </td>
+                            <td className="py-3 px-4 text-sm">
+                              {customer.orders}
+                            </td>
+                            <td className="py-3 px-4 text-sm font-medium">
+                              {customer.spent}
+                            </td>
                             <td className="py-3 px-4">
-                              <span className={cn(
-                                "inline-flex px-2 py-1 text-xs font-medium rounded-full",
-                                customer.status === "active" && "bg-green-100 text-green-800",
-                                customer.status === "vip" && "bg-purple-100 text-purple-800",
-                                customer.status === "new" && "bg-blue-100 text-blue-800"
-                              )}>
+                              <span
+                                className={cn(
+                                  "inline-flex px-2 py-1 text-xs font-medium rounded-full",
+                                  customer.status === "active" &&
+                                    "bg-green-100 text-green-800",
+                                  customer.status === "vip" &&
+                                    "bg-purple-100 text-purple-800",
+                                  customer.status === "new" &&
+                                    "bg-blue-100 text-blue-800",
+                                )}
+                              >
                                 {customer.status}
                               </span>
                             </td>
-                            <td className="py-3 px-4 text-sm text-ui-gray-600">{customer.joined}</td>
+                            <td className="py-3 px-4 text-sm text-ui-gray-600">
+                              {customer.joined}
+                            </td>
                             <td className="py-3 px-4 text-right">
                               <div className="flex justify-end gap-2">
                                 <Button variant="ghost" size="sm">
@@ -1414,8 +1597,12 @@ export default function Admin() {
                   <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-ui-gray-600">Revenue</p>
-                        <p className="text-3xl font-bold text-foreground">$87,430</p>
+                        <p className="text-sm font-medium text-ui-gray-600">
+                          Revenue
+                        </p>
+                        <p className="text-3xl font-bold text-foreground">
+                          $87,430
+                        </p>
                         <p className="text-sm text-green-600 flex items-center gap-1">
                           <TrendingUp className="w-4 h-4" />
                           +12.5% vs last month
@@ -1427,8 +1614,12 @@ export default function Admin() {
                   <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-ui-gray-600">Conversion Rate</p>
-                        <p className="text-3xl font-bold text-foreground">3.42%</p>
+                        <p className="text-sm font-medium text-ui-gray-600">
+                          Conversion Rate
+                        </p>
+                        <p className="text-3xl font-bold text-foreground">
+                          3.42%
+                        </p>
                         <p className="text-sm text-green-600 flex items-center gap-1">
                           <TrendingUp className="w-4 h-4" />
                           +0.3% vs last month
@@ -1440,8 +1631,12 @@ export default function Admin() {
                   <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-ui-gray-600">Avg. Order Value</p>
-                        <p className="text-3xl font-bold text-foreground">$142.50</p>
+                        <p className="text-sm font-medium text-ui-gray-600">
+                          Avg. Order Value
+                        </p>
+                        <p className="text-3xl font-bold text-foreground">
+                          $142.50
+                        </p>
                         <p className="text-sm text-red-600 flex items-center gap-1">
                           <TrendingDown className="w-4 h-4" />
                           -2.1% vs last month
@@ -1453,8 +1648,12 @@ export default function Admin() {
                   <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-ui-gray-600">Customer Lifetime Value</p>
-                        <p className="text-3xl font-bold text-foreground">$1,247</p>
+                        <p className="text-sm font-medium text-ui-gray-600">
+                          Customer Lifetime Value
+                        </p>
+                        <p className="text-3xl font-bold text-foreground">
+                          $1,247
+                        </p>
                         <p className="text-sm text-green-600 flex items-center gap-1">
                           <TrendingUp className="w-4 h-4" />
                           +8.7% vs last month
@@ -1469,19 +1668,26 @@ export default function Admin() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   {/* Revenue Chart */}
                   <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
-                    <h3 className="text-lg font-semibold mb-4">Revenue Trend</h3>
+                    <h3 className="text-lg font-semibold mb-4">
+                      Revenue Trend
+                    </h3>
                     <div className="h-64 flex items-end justify-between gap-2">
-                      {[65, 45, 78, 52, 91, 67, 83, 74, 89, 76, 95, 88].map((height, index) => (
-                        <div key={index} className="flex-1 bg-brand-primary/20 rounded-t-sm relative group cursor-pointer hover:bg-brand-primary/40 transition-colors">
+                      {[65, 45, 78, 52, 91, 67, 83, 74, 89, 76, 95, 88].map(
+                        (height, index) => (
                           <div
-                            className="bg-brand-primary rounded-t-sm"
-                            style={{ height: `${height}%` }}
-                          />
-                          <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                            ${(height * 50 + 2000).toLocaleString()}
+                            key={index}
+                            className="flex-1 bg-brand-primary/20 rounded-t-sm relative group cursor-pointer hover:bg-brand-primary/40 transition-colors"
+                          >
+                            <div
+                              className="bg-brand-primary rounded-t-sm"
+                              style={{ height: `${height}%` }}
+                            />
+                            <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                              ${(height * 50 + 2000).toLocaleString()}
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ),
+                      )}
                     </div>
                     <div className="flex justify-between text-xs text-ui-gray-500 mt-2">
                       <span>Jan</span>
@@ -1501,20 +1707,33 @@ export default function Admin() {
 
                   {/* Top Products */}
                   <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
-                    <h3 className="text-lg font-semibold mb-4">Top Selling Products</h3>
+                    <h3 className="text-lg font-semibold mb-4">
+                      Top Selling Products
+                    </h3>
                     <div className="space-y-4">
                       {filteredProducts.slice(0, 5).map((product, index) => (
-                        <div key={index} className="flex items-center justify-between">
+                        <div
+                          key={index}
+                          className="flex items-center justify-between"
+                        >
                           <div className="flex items-center gap-3">
                             <div className="w-8 h-8 bg-brand-primary/10 rounded-lg flex items-center justify-center">
-                              <span className="text-xs font-bold text-brand-primary">#{index + 1}</span>
+                              <span className="text-xs font-bold text-brand-primary">
+                                #{index + 1}
+                              </span>
                             </div>
                             <div>
-                              <p className="font-medium text-sm">{product.name}</p>
-                              <p className="text-xs text-ui-gray-500">{product.stockCount} in stock</p>
+                              <p className="font-medium text-sm">
+                                {product.name}
+                              </p>
+                              <p className="text-xs text-ui-gray-500">
+                                {product.stockCount} in stock
+                              </p>
                             </div>
                           </div>
-                          <span className="font-semibold text-sm">${product.price}</span>
+                          <span className="font-semibold text-sm">
+                            ${product.price}
+                          </span>
                         </div>
                       ))}
                     </div>
@@ -1525,18 +1744,30 @@ export default function Admin() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                   {/* Traffic Sources */}
                   <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
-                    <h3 className="text-lg font-semibold mb-4">Traffic Sources</h3>
+                    <h3 className="text-lg font-semibold mb-4">
+                      Traffic Sources
+                    </h3>
                     <div className="space-y-3">
                       {[
                         { source: "Direct", percentage: 42, visits: "12,456" },
-                        { source: "Search Engines", percentage: 31, visits: "9,123" },
-                        { source: "Social Media", percentage: 18, visits: "5,289" },
+                        {
+                          source: "Search Engines",
+                          percentage: 31,
+                          visits: "9,123",
+                        },
+                        {
+                          source: "Social Media",
+                          percentage: 18,
+                          visits: "5,289",
+                        },
                         { source: "Referrals", percentage: 9, visits: "2,647" },
                       ].map((item, index) => (
                         <div key={index}>
                           <div className="flex justify-between text-sm mb-1">
                             <span>{item.source}</span>
-                            <span className="text-ui-gray-500">{item.visits}</span>
+                            <span className="text-ui-gray-500">
+                              {item.visits}
+                            </span>
                           </div>
                           <div className="w-full bg-ui-gray-200 rounded-full h-2">
                             <div
@@ -1551,15 +1782,24 @@ export default function Admin() {
 
                   {/* Customer Satisfaction */}
                   <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
-                    <h3 className="text-lg font-semibold mb-4">Customer Satisfaction</h3>
+                    <h3 className="text-lg font-semibold mb-4">
+                      Customer Satisfaction
+                    </h3>
                     <div className="text-center">
-                      <div className="text-4xl font-bold text-green-600 mb-2">4.8</div>
+                      <div className="text-4xl font-bold text-green-600 mb-2">
+                        4.8
+                      </div>
                       <div className="flex justify-center mb-2">
                         {[1, 2, 3, 4, 5].map((star) => (
-                          <Star key={star} className="w-5 h-5 text-yellow-400 fill-current" />
+                          <Star
+                            key={star}
+                            className="w-5 h-5 text-yellow-400 fill-current"
+                          />
                         ))}
                       </div>
-                      <p className="text-sm text-ui-gray-600 mb-4">Based on 1,247 reviews</p>
+                      <p className="text-sm text-ui-gray-600 mb-4">
+                        Based on 1,247 reviews
+                      </p>
                       <div className="space-y-2">
                         {[5, 4, 3, 2, 1].map((stars) => (
                           <div key={stars} className="flex items-center gap-2">
@@ -1567,10 +1807,23 @@ export default function Admin() {
                             <div className="flex-1 bg-ui-gray-200 rounded-full h-2">
                               <div
                                 className="bg-yellow-400 h-2 rounded-full"
-                                style={{ width: `${stars === 5 ? 78 : stars === 4 ? 15 : stars === 3 ? 4 : stars === 2 ? 2 : 1}%` }}
+                                style={{
+                                  width: `${stars === 5 ? 78 : stars === 4 ? 15 : stars === 3 ? 4 : stars === 2 ? 2 : 1}%`,
+                                }}
                               />
                             </div>
-                            <span className="text-xs text-ui-gray-500 w-8">{stars === 5 ? 78 : stars === 4 ? 15 : stars === 3 ? 4 : stars === 2 ? 2 : 1}%</span>
+                            <span className="text-xs text-ui-gray-500 w-8">
+                              {stars === 5
+                                ? 78
+                                : stars === 4
+                                  ? 15
+                                  : stars === 3
+                                    ? 4
+                                    : stars === 2
+                                      ? 2
+                                      : 1}
+                              %
+                            </span>
                           </div>
                         ))}
                       </div>
@@ -1579,27 +1832,55 @@ export default function Admin() {
 
                   {/* Recent Activity */}
                   <div className="bg-white p-6 rounded-lg shadow-sm border border-ui-gray-200">
-                    <h3 className="text-lg font-semibold mb-4">Recent Activity</h3>
+                    <h3 className="text-lg font-semibold mb-4">
+                      Recent Activity
+                    </h3>
                     <div className="space-y-3">
                       {[
-                        { action: "New order #1247", time: "2 mins ago", type: "order" },
-                        { action: "Customer registered", time: "5 mins ago", type: "user" },
-                        { action: "Product updated", time: "12 mins ago", type: "product" },
-                        { action: "Payment received", time: "18 mins ago", type: "payment" },
-                        { action: "Review submitted", time: "25 mins ago", type: "review" },
+                        {
+                          action: "New order #1247",
+                          time: "2 mins ago",
+                          type: "order",
+                        },
+                        {
+                          action: "Customer registered",
+                          time: "5 mins ago",
+                          type: "user",
+                        },
+                        {
+                          action: "Product updated",
+                          time: "12 mins ago",
+                          type: "product",
+                        },
+                        {
+                          action: "Payment received",
+                          time: "18 mins ago",
+                          type: "payment",
+                        },
+                        {
+                          action: "Review submitted",
+                          time: "25 mins ago",
+                          type: "review",
+                        },
                       ].map((activity, index) => (
                         <div key={index} className="flex items-center gap-3">
-                          <div className={cn(
-                            "w-2 h-2 rounded-full",
-                            activity.type === "order" && "bg-blue-500",
-                            activity.type === "user" && "bg-green-500",
-                            activity.type === "product" && "bg-purple-500",
-                            activity.type === "payment" && "bg-yellow-500",
-                            activity.type === "review" && "bg-pink-500"
-                          )} />
+                          <div
+                            className={cn(
+                              "w-2 h-2 rounded-full",
+                              activity.type === "order" && "bg-blue-500",
+                              activity.type === "user" && "bg-green-500",
+                              activity.type === "product" && "bg-purple-500",
+                              activity.type === "payment" && "bg-yellow-500",
+                              activity.type === "review" && "bg-pink-500",
+                            )}
+                          />
                           <div className="flex-1">
-                            <p className="text-sm font-medium">{activity.action}</p>
-                            <p className="text-xs text-ui-gray-500">{activity.time}</p>
+                            <p className="text-sm font-medium">
+                              {activity.action}
+                            </p>
+                            <p className="text-xs text-ui-gray-500">
+                              {activity.time}
+                            </p>
                           </div>
                         </div>
                       ))}
