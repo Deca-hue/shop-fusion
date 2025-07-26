@@ -5,7 +5,7 @@ import { BackButton } from "@/components/ui/BackButton";
 import { Button } from "@/components/ui/button";
 import { User, Mail, Phone, MapPin, Calendar, Shield, Bell } from "lucide-react";
 
-export function Profile() {
+function Profile() {
   const { user, updateUser } = useAuth();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("profile");
