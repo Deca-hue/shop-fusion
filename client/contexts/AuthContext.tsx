@@ -91,6 +91,9 @@ const registeredUsers: User[] = [
 // User passwords storage (separate from user data for security)
 const userPasswords: Record<string, string> = {};
 
+// Email verification codes storage (in real app, this would be in backend)
+const verificationCodes: Record<string, { code: string; expires: number; attempts: number }> = {};
+
 // Function to update admin credentials
 export function updateAdminCredentials(newEmail: string, newPassword: string) {
   adminCredentials.email = newEmail;
