@@ -12,9 +12,10 @@ interface AuthButtonProps {
 }
 
 export function AuthButton({ className }: AuthButtonProps) {
-  const { user, isAuthenticated, logout } = useAuth();
+  const { user, isAuthenticated, logout, sendVerificationEmail } = useAuth();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showVerificationModal, setShowVerificationModal] = useState(false);
 
   if (isAuthenticated && user) {
     return (
