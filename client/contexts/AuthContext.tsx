@@ -11,6 +11,9 @@ interface AuthContextType extends AuthState {
   ) => Promise<boolean>;
   logout: () => void;
   updateUser: (user: Partial<User>) => void;
+  sendVerificationEmail: (email: string) => Promise<boolean>;
+  verifyEmail: (email: string, code: string) => Promise<boolean>;
+  resendVerificationCode: (email: string) => Promise<boolean>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
