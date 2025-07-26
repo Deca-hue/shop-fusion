@@ -39,6 +39,19 @@ export function AuthButton({ className }: AuthButtonProps) {
                 {user.firstName} {user.lastName}
               </p>
               <p className="text-xs text-ui-gray-500 truncate">{user.email}</p>
+              <div className="flex items-center gap-1 mt-1">
+                {user.emailVerified ? (
+                  <>
+                    <Shield className="w-3 h-3 text-green-500" />
+                    <span className="text-xs text-green-600">Email Verified</span>
+                  </>
+                ) : (
+                  <>
+                    <AlertTriangle className="w-3 h-3 text-yellow-500" />
+                    <span className="text-xs text-yellow-600">Email Not Verified</span>
+                  </>
+                )}
+              </div>
             </div>
             <div className="p-1">
               {user.role === "customer" && (
