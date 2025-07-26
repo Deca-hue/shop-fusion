@@ -28,6 +28,8 @@ import {
   TrendingDown,
   AlertTriangle,
   CheckCircle,
+  Menu,
+  X,
 } from "lucide-react";
 
 export default function Admin() {
