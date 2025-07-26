@@ -71,18 +71,8 @@ let adminCredentials = {
   password: "@Shop254",
 };
 
-// Mock users for demo
-const mockUsers: User[] = [
-  {
-    id: "1",
-    email: "demo@shopfusion.com",
-    firstName: "Demo",
-    lastName: "User",
-    role: "customer",
-    addresses: [],
-    createdAt: "2024-01-01T00:00:00Z",
-    emailVerified: true,
-  },
+// Registered users storage (only admin exists by default)
+const registeredUsers: User[] = [
   {
     id: "2",
     email: "admin@shopfusion.com",
@@ -95,13 +85,16 @@ const mockUsers: User[] = [
   },
 ];
 
+// User passwords storage (separate from user data for security)
+const userPasswords: Record<string, string> = {};
+
 // Function to update admin credentials
 export function updateAdminCredentials(newEmail: string, newPassword: string) {
   adminCredentials.email = newEmail;
   adminCredentials.password = newPassword;
 
-  // Update the user in mockUsers array
-  const adminUser = mockUsers.find((u) => u.role === "admin");
+  // Update the user in registeredUsers array
+  const adminUser = registeredUsers.find((u) => u.role === "admin");
   if (adminUser) {
     adminUser.email = newEmail;
   }
@@ -130,12 +123,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    // Mock authentication - in real app, this would be an API call
-    const user = mockUsers.find((u) => u.email === email);
+    // Authentication - check registered users
+    const user = registeredUsers.find((u) => u.email === email);
 
     if (
       user &&
-      ((user.role === "customer" && password === "password") ||
+      ((user.role === "customer" && userPasswords[email] === password) ||
         (user.role === "admin" &&
           email === adminCredentials.email &&
           password === adminCredentials.password))
@@ -161,7 +154,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     // Check if user already exists
-    const existingUser = mockUsers.find((u) => u.email === email);
+    const existingUser = registeredUsers.find((u) => u.email === email);
     if (existingUser) {
       dispatch({ type: "LOGIN_ERROR" });
       return false;
@@ -179,7 +172,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       emailVerified: false,
     };
 
-    mockUsers.push(newUser);
+    // Store user and password securely
+    registeredUsers.push(newUser);
+    userPasswords[email] = password;
+
     localStorage.setItem("shopfusion_user", JSON.stringify(newUser));
     dispatch({ type: "LOGIN_SUCCESS", payload: newUser });
     return true;
