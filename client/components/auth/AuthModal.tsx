@@ -8,6 +8,7 @@ import {
 } from "@/lib/validation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { EmailVerificationModal } from "./EmailVerificationModal";
 import { X, Eye, EyeOff, Mail, Lock, User, Shield } from "lucide-react";
 
 interface AuthModalProps {
