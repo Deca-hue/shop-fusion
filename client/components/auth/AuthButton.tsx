@@ -147,6 +147,15 @@ export function AuthButton({ className }: AuthButtonProps) {
         onClose={() => setIsModalOpen(false)}
         defaultMode="login"
       />
+
+      {/* Email Verification Modal */}
+      {user && (
+        <EmailVerificationModal
+          isOpen={showVerificationModal}
+          onClose={() => setShowVerificationModal(false)}
+          email={user.email}
+        />
+      )}
     </>
   );
 }
