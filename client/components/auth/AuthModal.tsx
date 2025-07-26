@@ -315,6 +315,17 @@ export function AuthModal({
           </div>
         </div>
       </div>
+
+      {/* Email Verification Modal */}
+      <EmailVerificationModal
+        isOpen={showVerificationModal}
+        onClose={() => {
+          setShowVerificationModal(false);
+          onClose();
+          setFormData({ email: "", password: "", firstName: "", lastName: "" });
+        }}
+        email={registeredEmail}
+      />
     </>
   );
 }
