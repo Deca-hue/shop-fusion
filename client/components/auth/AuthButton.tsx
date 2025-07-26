@@ -54,6 +54,21 @@ export function AuthButton({ className }: AuthButtonProps) {
               </div>
             </div>
             <div className="p-1">
+              {/* Email Verification for unverified users */}
+              {!user.emailVerified && (
+                <button
+                  onClick={async () => {
+                    setShowDropdown(false);
+                    await sendVerificationEmail(user.email);
+                    setShowVerificationModal(true);
+                  }}
+                  className="w-full text-left px-3 py-2 text-sm hover:bg-ui-gray-50 rounded text-yellow-600 flex items-center gap-2"
+                >
+                  <AlertTriangle className="w-4 h-4" />
+                  Verify Email
+                </button>
+              )}
+
               {user.role === "customer" && (
                 <>
                   <Link
