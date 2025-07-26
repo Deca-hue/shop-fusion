@@ -276,9 +276,30 @@ export default function Admin() {
         <div className="mb-6">
           <BackButton to="/" />
         </div>
+        {/* Mobile Menu Button */}
+        <div className="lg:hidden mb-4">
+          <Button
+            onClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
+            variant="outline"
+            className="w-full flex items-center gap-2"
+          >
+            {isMobileSidebarOpen ? (
+              <X className="w-4 h-4" />
+            ) : (
+              <Menu className="w-4 h-4" />
+            )}
+            Admin Menu
+          </Button>
+        </div>
+
+        {/* Mobile Sidebar Overlay */}
+        {isMobileSidebarOpen && (
+          <div className="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-50" onClick={() => setIsMobileSidebarOpen(false)} />
+        )}
+
         <div className="flex gap-8">
-          {/* Sidebar */}
-          <div className="w-64 flex-shrink-0">
+          {/* Desktop Sidebar */}
+          <div className="hidden lg:block w-64 flex-shrink-0">
             <nav className="bg-white rounded-lg shadow-sm border border-ui-gray-200 p-4">
               <ul className="space-y-2">
                 {[
