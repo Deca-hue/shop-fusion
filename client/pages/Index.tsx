@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { getFeaturedProducts, mockCategories } from "@/lib/mock-data";
 import { ProductCard } from "@/components/products/ProductCard";
 import { CartButton } from "@/components/cart/CartButton";
@@ -15,9 +16,13 @@ import {
   TrendingUp,
   ShoppingBag,
   Clock,
+  Menu,
+  X,
+  Search,
 } from "lucide-react";
 
 export default function Index() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const featuredProducts = getFeaturedProducts();
 
   return (
@@ -29,50 +34,86 @@ export default function Index() {
             {/* Logo */}
             <div className="flex items-center">
               <Link to="/">
-                <h1 className="text-2xl font-serif font-bold text-brand-primary">
+                <h1 className="text-xl sm:text-2xl font-serif font-bold text-brand-primary">
                   ShopFusion
                 </h1>
               </Link>
             </div>
 
-            {/* Search Bar */}
-            <div className="flex-1 max-w-lg mx-8">
-              <div className="relative">
+            {/* Desktop Search Bar */}
+            <div className="hidden md:flex flex-1 max-w-lg mx-8">
+              <div className="relative w-full">
                 <input
                   type="text"
                   placeholder="Search products..."
                   className="search-input"
                 />
                 <div className="absolute inset-y-0 right-0 flex items-center pr-3">
-                  <svg
-                    className="h-5 w-5 text-ui-gray-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                  </svg>
+                  <Search className="h-5 w-5 text-ui-gray-400" />
                 </div>
               </div>
             </div>
 
-            {/* Navigation */}
-            <nav className="flex items-center space-x-6">
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center space-x-6">
               <Link
                 to="/products"
-                className="text-foreground hover:text-brand-primary"
+                className="text-foreground hover:text-brand-primary transition-colors"
               >
                 Products
               </Link>
               <AuthButton />
               <CartButton />
             </nav>
+
+            {/* Mobile Menu Button & Cart */}
+            <div className="md:hidden flex items-center space-x-2">
+              <CartButton />
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2 text-foreground hover:text-brand-primary transition-colors"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
+              </button>
+            </div>
           </div>
+
+          {/* Mobile Menu */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden bg-white border-t border-ui-gray-200 py-4">
+              <div className="px-4 space-y-4">
+                {/* Mobile Search */}
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="Search products..."
+                    className="search-input"
+                  />
+                  <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+                    <Search className="h-5 w-5 text-ui-gray-400" />
+                  </div>
+                </div>
+
+                {/* Mobile Navigation Links */}
+                <div className="space-y-2">
+                  <Link
+                    to="/products"
+                    className="block px-3 py-2 text-foreground hover:text-brand-primary hover:bg-ui-gray-50 rounded transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Products
+                  </Link>
+                  <div className="px-3 py-2">
+                    <AuthButton className="w-full" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </header>
 
