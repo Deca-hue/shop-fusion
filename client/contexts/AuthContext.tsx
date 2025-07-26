@@ -279,6 +279,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     register,
     logout,
     updateUser,
+    sendVerificationEmail,
+    verifyEmail,
+    resendVerificationCode,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
