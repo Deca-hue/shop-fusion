@@ -330,6 +330,54 @@ export default function Admin() {
             </nav>
           </div>
 
+          {/* Mobile Sidebar */}
+          {isMobileSidebarOpen && (
+            <div className="lg:hidden fixed left-0 top-0 bottom-0 w-64 bg-white z-50 shadow-xl">
+              <div className="p-4 border-b border-ui-gray-200">
+                <div className="flex items-center justify-between">
+                  <h2 className="font-semibold text-lg">Admin Menu</h2>
+                  <button
+                    onClick={() => setIsMobileSidebarOpen(false)}
+                    className="p-1 text-ui-gray-500 hover:text-ui-gray-700"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+              <nav className="p-4">
+                <ul className="space-y-2">
+                  {[
+                    { id: "dashboard", label: "Dashboard", icon: BarChart3 },
+                    { id: "products", label: "Products", icon: Package },
+                    { id: "categories", label: "Categories", icon: Filter },
+                    { id: "orders", label: "Orders", icon: ShoppingCart },
+                    { id: "customers", label: "Customers", icon: Users },
+                    { id: "analytics", label: "Analytics", icon: TrendingUp },
+                    { id: "security", label: "Security", icon: Settings },
+                  ].map((tab) => (
+                    <li key={tab.id}>
+                      <button
+                        onClick={() => {
+                          setActiveTab(tab.id);
+                          setIsMobileSidebarOpen(false);
+                        }}
+                        className={cn(
+                          "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left transition-colors",
+                          activeTab === tab.id
+                            ? "bg-brand-primary text-white"
+                            : "text-ui-gray-700 hover:bg-ui-gray-100",
+                        )}
+                      >
+                        <tab.icon className="w-5 h-5" />
+                        {tab.label}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+          )}
+
           {/* Main Content */}
           <div className="flex-1">
             {/* Dashboard */}
