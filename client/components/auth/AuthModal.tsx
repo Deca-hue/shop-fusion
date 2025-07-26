@@ -24,6 +24,8 @@ export function AuthModal({
 }: AuthModalProps) {
   const [mode, setMode] = useState<"login" | "register">(defaultMode);
   const [showPassword, setShowPassword] = useState(false);
+  const [showVerificationModal, setShowVerificationModal] = useState(false);
+  const [registeredEmail, setRegisteredEmail] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -32,7 +34,7 @@ export function AuthModal({
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const { login, register, isLoading } = useAuth();
+  const { login, register, isLoading, sendVerificationEmail } = useAuth();
   const { secureSubmit, checkRateLimit, isSecureEnvironment } = useSecurity();
 
   const handleSubmit = async (e: React.FormEvent) => {
