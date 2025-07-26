@@ -200,6 +200,79 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const sendVerificationEmail = async (email: string): Promise<boolean> => {
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    // Generate 6-digit verification code
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+    const expires = Date.now() + 10 * 60 * 1000; // 10 minutes
+
+    verificationCodes[email] = { code, expires, attempts: 0 };
+
+    // In real app, send email here
+    console.log(`Verification code for ${email}: ${code}`);
+
+    // For demo, show the code in an alert
+    alert(`Verification code sent to ${email}: ${code}\n\nThis is demo mode - in production, this would be sent via email.`);
+
+    return true;
+  };
+
+  const verifyEmail = async (email: string, inputCode: string): Promise<boolean> => {
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
+    const verification = verificationCodes[email];
+    if (!verification) {
+      return false;
+    }
+
+    verification.attempts++;
+
+    // Check if code is expired
+    if (Date.now() > verification.expires) {
+      delete verificationCodes[email];
+      return false;
+    }
+
+    // Check if too many attempts
+    if (verification.attempts > 3) {
+      delete verificationCodes[email];
+      return false;
+    }
+
+    // Check if code matches
+    if (verification.code === inputCode) {
+      // Mark user as verified
+      const user = registeredUsers.find((u) => u.email === email);
+      if (user) {
+        user.emailVerified = true;
+
+        // Update current user if logged in
+        if (state.user && state.user.email === email) {
+          const updatedUser = { ...state.user, emailVerified: true };
+          localStorage.setItem("shopfusion_user", JSON.stringify(updatedUser));
+          dispatch({ type: "UPDATE_USER", payload: { emailVerified: true } });
+        }
+      }
+
+      delete verificationCodes[email];
+      return true;
+    }
+
+    return false;
+  };
+
+  const resendVerificationCode = async (email: string): Promise<boolean> => {
+    // Reset attempts
+    if (verificationCodes[email]) {
+      verificationCodes[email].attempts = 0;
+    }
+
+    return await sendVerificationEmail(email);
+  };
+
   const value: AuthContextType = {
     ...state,
     login,
