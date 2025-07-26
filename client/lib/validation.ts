@@ -17,8 +17,52 @@ export interface ValidationResult {
   errors: Record<string, string>;
 }
 
-// Email validation with comprehensive regex
-export const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+// Enhanced email validation with strict requirements for real emails
+export const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+// Common valid email domains to check against
+const VALID_EMAIL_DOMAINS = [
+  'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'live.com', 'msn.com',
+  'aol.com', 'icloud.com', 'me.com', 'mac.com', 'protonmail.com', 'mail.com',
+  'yandex.com', 'zoho.com', 'fastmail.com', 'tutanota.com', 'gmx.com',
+  'mail.ru', 'qq.com', '163.com', 'sina.com', 'naver.com', 'daum.net',
+  // Business/Educational domains
+  'company.com', 'business.com', 'corp.com', 'org.com', 'edu', 'gov',
+  // Add more common domains as needed
+];
+
+// Suspicious patterns that might indicate fake emails
+const SUSPICIOUS_PATTERNS = [
+  /test/i, /fake/i, /example/i, /demo/i, /temp/i, /throwaway/i, /mailinator/i,
+  /10minutemail/i, /guerrillamail/i, /sharklasers/i, /grr\.la/i,
+  /asdf/i, /qwerty/i, /123/i, /abc/i, /xyz/i
+];
+
+// Check if email domain exists in our valid list or follows common patterns
+function isValidEmailDomain(domain: string): boolean {
+  const lowerDomain = domain.toLowerCase();
+
+  // Check against known valid domains
+  if (VALID_EMAIL_DOMAINS.includes(lowerDomain)) {
+    return true;
+  }
+
+  // Allow common business domain patterns
+  if (lowerDomain.endsWith('.com') || lowerDomain.endsWith('.org') ||
+      lowerDomain.endsWith('.net') || lowerDomain.endsWith('.edu') ||
+      lowerDomain.endsWith('.gov') || lowerDomain.endsWith('.mil')) {
+    // Must have at least 4 chars before TLD (e.g., test.com)
+    const baseDomain = lowerDomain.split('.')[0];
+    return baseDomain.length >= 3;
+  }
+
+  // Allow country code domains
+  if (lowerDomain.match(/\.[a-z]{2}$/)) {
+    return true;
+  }
+
+  return false;
+}
 
 // Password strength validation
 export const PASSWORD_REGEX =
