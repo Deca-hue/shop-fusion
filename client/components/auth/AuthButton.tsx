@@ -39,28 +39,41 @@ export function AuthButton({ className }: AuthButtonProps) {
               <p className="text-xs text-ui-gray-500 truncate">{user.email}</p>
             </div>
             <div className="p-1">
-              <Link
-                to="/settings"
-                className="w-full text-left px-3 py-2 text-sm hover:bg-ui-gray-50 rounded block"
-                onClick={() => setShowDropdown(false)}
-              >
-                Profile & Settings
-              </Link>
-              <Link
-                to="/orders"
-                className="w-full text-left px-3 py-2 text-sm hover:bg-ui-gray-50 rounded block"
-                onClick={() => setShowDropdown(false)}
-              >
-                My Orders
-              </Link>
+              {user.role === "customer" && (
+                <>
+                  <Link
+                    to="/profile"
+                    className="w-full text-left px-3 py-2 text-sm hover:bg-ui-gray-50 rounded block"
+                    onClick={() => setShowDropdown(false)}
+                  >
+                    My Profile
+                  </Link>
+                  <Link
+                    to="/orders"
+                    className="w-full text-left px-3 py-2 text-sm hover:bg-ui-gray-50 rounded block"
+                    onClick={() => setShowDropdown(false)}
+                  >
+                    My Orders
+                  </Link>
+                </>
+              )}
               {user.role === "admin" && (
-                <Link
-                  to="/admin"
-                  className="w-full text-left px-3 py-2 text-sm hover:bg-ui-gray-50 rounded text-brand-primary block"
-                  onClick={() => setShowDropdown(false)}
-                >
-                  Admin Panel
-                </Link>
+                <>
+                  <Link
+                    to="/admin"
+                    className="w-full text-left px-3 py-2 text-sm hover:bg-ui-gray-50 rounded text-brand-primary block"
+                    onClick={() => setShowDropdown(false)}
+                  >
+                    Admin Panel
+                  </Link>
+                  <Link
+                    to="/settings"
+                    className="w-full text-left px-3 py-2 text-sm hover:bg-ui-gray-50 rounded block"
+                    onClick={() => setShowDropdown(false)}
+                  >
+                    Admin Settings
+                  </Link>
+                </>
               )}
               <hr className="my-1" />
               <button
