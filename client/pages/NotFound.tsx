@@ -18,7 +18,7 @@ const NotFound = () => {
     <div className="min-h-screen flex items-center justify-center bg-ui-gray-50">
       <div className="text-center max-w-md mx-auto px-4">
         <div className="mb-8">
-          <div className="text-8xl font-bold text-brand-primary mb-4 gradient-text">
+          <div className="text-6xl sm:text-7xl md:text-8xl font-bold text-brand-primary mb-4 gradient-text">
             404
           </div>
           <h1 className="text-2xl font-serif font-bold text-foreground mb-2">
