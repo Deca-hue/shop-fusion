@@ -98,14 +98,60 @@ export function sanitizeInput(input: string): string {
 }
 
 /**
- * Validate email format
+ * Validate email format with enhanced real email checking
  */
 export function validateEmail(email: string): string | null {
   const sanitized = sanitizeInput(email);
 
   if (!sanitized) return "Email is required";
+
+  // Basic format validation
   if (!EMAIL_REGEX.test(sanitized)) return "Please enter a valid email address";
   if (sanitized.length > 254) return "Email address is too long";
+  if (sanitized.length < 5) return "Email address is too short";
+
+  // Split email into local and domain parts
+  const parts = sanitized.split('@');
+  if (parts.length !== 2) return "Please enter a valid email address";
+
+  const [localPart, domain] = parts;
+
+  // Validate local part (before @)
+  if (localPart.length < 1 || localPart.length > 64) {
+    return "Email address format is invalid";
+  }
+
+  // Check for suspicious patterns in local part
+  for (const pattern of SUSPICIOUS_PATTERNS) {
+    if (pattern.test(localPart)) {
+      return "Please use a real email address";
+    }
+  }
+
+  // Validate domain part
+  if (domain.length < 3 || domain.length > 253) {
+    return "Email domain is invalid";
+  }
+
+  // Check if domain looks real
+  if (!isValidEmailDomain(domain)) {
+    return "Please use a valid email domain (e.g., gmail.com, company.com)";
+  }
+
+  // Additional checks for realistic emails
+  if (localPart.includes('..') || localPart.startsWith('.') || localPart.endsWith('.')) {
+    return "Email address format is invalid";
+  }
+
+  // Check for too many consecutive numbers or letters (likely fake)
+  if (/(.)\1{4,}/.test(localPart)) {
+    return "Please use a real email address";
+  }
+
+  // Check for random-looking patterns
+  if (localPart.length > 10 && /^[a-z]{10,}$|^[0-9]{10,}$/.test(localPart)) {
+    return "Please use a real email address";
+  }
 
   return null;
 }
