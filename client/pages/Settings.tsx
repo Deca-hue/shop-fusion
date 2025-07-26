@@ -24,6 +24,12 @@ import {
 export default function SettingsPage() {
   const { user, isAuthenticated } = useAuth();
   const navigate = useNavigate();
+
+  // Restrict access to admin users only
+  if (!isAuthenticated || !user || user.role !== "admin") {
+    navigate("/");
+    return null;
+  }
   const [activeSection, setActiveSection] = useState("profile");
   const [showPassword, setShowPassword] = useState(false);
   const [settings, setSettings] = useState({
