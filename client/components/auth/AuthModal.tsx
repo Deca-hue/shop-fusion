@@ -93,8 +93,17 @@ export function AuthModal({
     }, formData.email);
 
     if (result.success && result.data) {
-      onClose();
-      setFormData({ email: "", password: "", firstName: "", lastName: "" });
+      if (mode === "register") {
+        // For registration, show email verification modal
+        setRegisteredEmail(formData.email);
+        setShowVerificationModal(true);
+        await sendVerificationEmail(formData.email);
+        // Don't close the modal yet - wait for email verification
+      } else {
+        // For login, close modal immediately
+        onClose();
+        setFormData({ email: "", password: "", firstName: "", lastName: "" });
+      }
     } else {
       setErrors({
         submit:
